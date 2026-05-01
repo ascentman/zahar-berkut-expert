@@ -1,0 +1,16 @@
+[project]
+name = "zahar-berkut-expert"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "beautifulsoup4>=4.14.3",
+    "langchain>=1.2.17",
+    "langchain-community>=0.4.1",
+    "langchain-google-genai>=4.2.2",
+    "langchain-qdrant>=1.1.0",
+    "langchain-text-splitters>=1.1.2",
+    "pypdf>=6.10.2",
+    "qdrant-client>=1.17.1",
+]
