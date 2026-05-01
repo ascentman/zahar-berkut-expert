@@ -68,6 +68,6 @@ To set up and run the Zahar Berkut Expert application, follow these steps:
 
 Here's a glimpse of the web interface in action:
 
-!Zahar Berkut Expert Screenshot
+![Zahar Berkut Expert Screenshot](example.png)
 ```
 ![App Screenshot](example.png)
