@@ -70,6 +70,4 @@ Here's a glimpse of the web interface in action:
 
 !Zahar Berkut Expert Screenshot
 ```
-<!--
-[PROMPT_SUGGESTION]Як додати можливість очищення історії чату в Streamlit?[/PROMPT_SUGGESTION]
-[PROMPT_SUGGESTION]Як відобразити джерела (номери сторінок) для відповіді в Streamlit?[/PROMPT_SUGGESTION]
+![App Screenshot](example.png)
