@@ -68,8 +68,11 @@ def main():
     if "retrieval_chain" not in st.session_state:
         with st.status("Initializing Knowledge Base...", expanded=True) as status:
             st.write("Loading and chunking PDF...")
+
+            api_key = os.getenv("GOOGLE_API_KEY") or st.secrets.get("GOOGLE_API_KEY")
+
             st.write("Initializing Embeddings...")
-            embeddings = GoogleGenerativeAIEmbeddings(model="gemini-embedding-2")
+            embeddings = GoogleGenerativeAIEmbeddings(model="gemini-embedding-2", google_api_key=api_key)
 
             st.write("Setting up Vector Store...")
             persist_path = "./qdrant_db"
@@ -90,7 +93,7 @@ def main():
                 )
 
             st.write("Configuring Retrieval Chain...")
-            llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0)
+            llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0, google_api_key=api_key)
 
             # Оновлений промт: просимо бути уважнішим до деталей
             prompt = ChatPromptTemplate.from_template("""
