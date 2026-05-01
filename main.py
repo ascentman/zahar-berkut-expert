@@ -8,11 +8,13 @@
 #   "langchain-qdrant",
 #   "qdrant-client",
 #   "langchain",
+#   "streamlit",
 # ]
 # ///
 
 import os
 import pypdf
+import streamlit as st
 from dotenv import load_dotenv
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -43,8 +45,8 @@ def load_zahar_berkut_script():
 
     # Split documents into smaller chunks
     text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=1000,      # The maximum number of characters in a chunk
-        chunk_overlap=200,    # The number of characters shared between adjacent chunks
+        chunk_size=500,      # The maximum number of characters in a chunk
+        chunk_overlap=100,    # The number of characters shared between adjacent chunks
         add_start_index=True, # Adds the character position in the original page to metadata
         separators=["\n\n", "\n", ". ", " ", ""], # Tries to keep paragraphs, then lines, then sentences whole
     )
@@ -56,61 +58,67 @@ def main():
     # Load variables from .env file into environment variables
     load_dotenv()
 
-    # Load and split the script
-    chunks, title = load_zahar_berkut_script()
+    st.set_page_config(page_title="Захар Беркут Expert", page_icon="🦅")
+    st.title("🦅 Захар Беркут Expert")
 
-    # Script metadata
-    script = {"title": title}
+    if "messages" not in st.session_state:
+        st.session_state.messages = []
 
-    print(f"Loaded and split script for {script['title']} into {len(chunks)}")
+    if "retrieval_chain" not in st.session_state:
+        with st.status("Initializing Knowledge Base...", expanded=True) as status:
+            st.write("Loading and chunking PDF...")
+            chunks, title = load_zahar_berkut_script()
 
-    # Initialize Gemini Embeddings
-    # Ensure you have the GOOGLE_API_KEY environment variable set
-    embeddings = GoogleGenerativeAIEmbeddings(model="gemini-embedding-2")
+            st.write("Initializing Embeddings...")
+            embeddings = GoogleGenerativeAIEmbeddings(model="gemini-embedding-2")
 
-    print("Gemini embeddings model initialized.")
+            st.write("Setting up Vector Store...")
+            vector_store = QdrantVectorStore.from_documents(
+                chunks,
+                embeddings,
+                path="./qdrant_db",
+                collection_name="zahar_berkut",
+            )
 
-    # Create Qdrant vector store and persist it to a local directory
-    vector_store = QdrantVectorStore.from_documents(
-        chunks,
-        embeddings,
-        path="./qdrant_db",
-        collection_name="zahar_berkut",
-    )
+            st.write("Configuring Retrieval Chain...")
+            llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0)
+            prompt = ChatPromptTemplate.from_template("""
+            You are an expert on the book "Захар Беркут".
+            Use the following pieces of retrieved context to answer the question.
+            If the answer is partly contained, provide the best possible answer based on text in the context.
+            If you don't know the answer based on the context, say that you don't know.
 
-    print(f"Successfully stored {len(chunks)} vectors in local Qdrant DB at ./qdrant_db")
+            Context:
+            {context}
 
-    # Initialize the LLM (using gemini-2.0-flash from your available models)
-    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0)
+            Question: {input}
 
-    # Configure the prompt template
-    prompt = ChatPromptTemplate.from_template("""
-    You are an expert on the book "Захар Беркут".
-    Use the following pieces of retrieved context to answer the question.
-    If you don't know the answer based on the context, say that you don't know.
+            Answer:""")
 
-    Context:
-    {context}
+            combine_docs_chain = create_stuff_documents_chain(llm, prompt)
+            retriever = vector_store.as_retriever(search_kwargs={"k": 15})
+            st.session_state.retrieval_chain = create_retrieval_chain(retriever, combine_docs_chain)
+            status.update(label=f"Knowledge Base Ready: {title}", state="complete", expanded=False)
 
-    Question: {input}
+    # Display message history
+    for message in st.session_state.messages:
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
 
-    Answer:""")
+    # Chat input
+    if user_query := st.chat_input("Ask about Zahar Berkut..."):
+        # Display user message
+        st.session_state.messages.append({"role": "user", "content": user_query})
+        with st.chat_message("user"):
+            st.markdown(user_query)
 
-    # Set up the retrieval chain with k=15 chunks
-    combine_docs_chain = create_stuff_documents_chain(llm, prompt)
-    retriever = vector_store.as_retriever(search_kwargs={"k": 15})
-    retrieval_chain = create_retrieval_chain(retriever, combine_docs_chain)
-
-    print("\n--- Q&A Loop Started ---")
-    print("Ask me anything about Zahar Berkut (type 'exit' to quit)")
-
-    while True:
-        user_input = input("\nYour Question: ")
-        if user_input.lower() in ["exit", "quit", "q"]:
-            break
-
-        response = retrieval_chain.invoke({"input": user_input})
-        print(f"\nAnswer: {response['answer']}")
+        # Generate and display assistant response
+        with st.chat_message("assistant"):
+            with st.spinner("Analyzing context..."):
+                response = st.session_state.retrieval_chain.invoke({"input": user_query})
+                answer = response["answer"]
+                st.markdown(answer)
+                st.session_state.messages.append({"role": "assistant", "content": answer})
 
 
 if __name__ == "__main__":
