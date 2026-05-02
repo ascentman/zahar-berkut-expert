@@ -54,6 +54,55 @@ def load_zahar_berkut_script():
 
     return text_splitter.split_documents(documents), title
 
+@st.cache_resource
+def init_retrieval_chain(api_key):
+    """Initialize and cache the retrieval chain to prevent locking errors and redundant loading."""
+    embeddings = GoogleGenerativeAIEmbeddings(model="gemini-embedding-2", google_api_key=api_key)
+    persist_path = "./qdrant_db"
+
+    # Attempt to load existing collection; fallback to creation if invalid/missing/locked
+    vector_store = None
+    if os.path.exists(persist_path) and os.path.isdir(persist_path):
+        try:
+            vector_store = QdrantVectorStore.from_existing_collection(
+                embedding=embeddings,
+                path=persist_path,
+                collection_name="zahar_berkut",
+            )
+        except Exception:
+            # If loading fails (corrupted or incompatible files), we fall back to document recreation
+            vector_store = None
+
+    if vector_store is None:
+        chunks, _ = load_zahar_berkut_script()
+        vector_store = QdrantVectorStore.from_documents(
+            chunks,
+            embeddings,
+            path=persist_path,
+            collection_name="zahar_berkut",
+        )
+
+    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0, google_api_key=api_key)
+
+    prompt = ChatPromptTemplate.from_template("""
+    You are an expert on the book "Захар Беркут".
+    Use the following pieces of retrieved context to answer the question.
+    If the answer is partly contained, provide the best possible answer based on text in the context.
+    If you don't know the answer based on the context, say that you don't know.
+
+    Context:
+    {context}
+
+    Question: {input}
+
+    Answer:""")
+
+    combine_docs_chain = create_stuff_documents_chain(llm, prompt)
+    base_retriever = vector_store.as_retriever(search_kwargs={"k": 15})
+    mq_retriever = MultiQueryRetriever.from_llm(retriever=base_retriever, llm=llm)
+
+    return create_retrieval_chain(mq_retriever, combine_docs_chain)
+
 
 def main():
     # Load variables from .env file into environment variables
@@ -66,59 +115,14 @@ def main():
         st.session_state.messages = []
 
     if "retrieval_chain" not in st.session_state:
-        with st.status("Initializing Knowledge Base...", expanded=True) as status:
-            st.write("Loading and chunking PDF...")
+        api_key = os.getenv("GOOGLE_API_KEY") or st.secrets.get("GOOGLE_API_KEY")
+        if not api_key:
+            st.error("Missing GOOGLE_API_KEY. Please set it in your .env file or Streamlit secrets.")
+            st.stop()
 
-            api_key = os.getenv("GOOGLE_API_KEY") or st.secrets.get("GOOGLE_API_KEY")
-
-            st.write("Initializing Embeddings...")
-            embeddings = GoogleGenerativeAIEmbeddings(model="gemini-embedding-2", google_api_key=api_key)
-
-            st.write("Setting up Vector Store...")
-            persist_path = "./qdrant_db"
-            if os.path.exists(persist_path):
-                vector_store = QdrantVectorStore.from_existing_collection(
-                    embedding=embeddings,
-                    path=persist_path,
-                    collection_name="zahar_berkut",
-                )
-                title = "Захар Беркут" # Fallback title
-            else:
-                chunks, title = load_zahar_berkut_script()
-                vector_store = QdrantVectorStore.from_documents(
-                    chunks,
-                    embeddings,
-                    path=persist_path,
-                    collection_name="zahar_berkut",
-                )
-
-            st.write("Configuring Retrieval Chain...")
-            llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0, google_api_key=api_key)
-
-            # Оновлений промт: просимо бути уважнішим до деталей
-            prompt = ChatPromptTemplate.from_template("""
-            You are an expert on the book "Захар Беркут".
-            Use the following pieces of retrieved context to answer the question.
-            If the answer is partly contained, provide the best possible answer based on text in the context.
-            If you don't know the answer based on the context, say that you don't know.
-
-            Context:
-            {context}
-
-            Question: {input}
-
-            Answer:""")
-
-            combine_docs_chain = create_stuff_documents_chain(llm, prompt)
-
-            # Використовуємо MultiQueryRetriever для кращого пошуку імен
-            base_retriever = vector_store.as_retriever(search_kwargs={"k": 15})
-            mq_retriever = MultiQueryRetriever.from_llm(
-                retriever=base_retriever, llm=llm
-            )
-
-            st.session_state.retrieval_chain = create_retrieval_chain(mq_retriever, combine_docs_chain)
-            status.update(label=f"Knowledge Base Ready: {title}", state="complete", expanded=False)
+        with st.status("Initializing Knowledge Base...", expanded=False) as status:
+            st.session_state.retrieval_chain = init_retrieval_chain(api_key)
+            status.update(label="Knowledge Base Ready!", state="complete")
 
     # Display message history
     for message in st.session_state.messages:
