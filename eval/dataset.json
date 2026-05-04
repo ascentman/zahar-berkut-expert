@@ -1,0 +1,281 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "book": "Захар Беркут",
+    "author": "Іван Франко",
+    "created": "2026-05-04",
+    "notes": "Starter set — review and correct reference answers. Extend to 50-100 over time."
+  },
+  "questions": [
+    {
+      "id": "fact-001",
+      "question": "Хто такий Захар Беркут?",
+      "reference_answer": "Захар Беркут — старійшина тухольської громади, мудрий лідер, який керує громадою і захищає її інтереси.",
+      "type": "open-ended",
+      "category": "character",
+      "difficulty": "easy",
+      "notes": "Descriptive — reclassified to open-ended. Must NOT confuse with real people."
+    },
+    {
+      "id": "fact-002",
+      "question": "Як звати сина Захара Беркута?",
+      "reference_answer": "Максим",
+      "type": "factual",
+      "category": "character",
+      "difficulty": "easy",
+      "notes": "Basic character ID — singular to avoid confusion about number of sons"
+    },
+    {
+      "id": "fact-003",
+      "question": "Хто є батьком Мирослави?",
+      "reference_answer": "Тугар Вовк",
+      "type": "factual",
+      "category": "character",
+      "difficulty": "easy",
+      "notes": "Key antagonist relationship"
+    },
+    {
+      "id": "fact-004",
+      "question": "Де відбуваються події повісті?",
+      "reference_answer": "Тухольщина, Карпати",
+      "type": "factual",
+      "category": "setting",
+      "difficulty": "easy",
+      "notes": "Geographic setting"
+    },
+    {
+      "id": "fact-005",
+      "question": "В якому столітті відбуваються події повісті?",
+      "reference_answer": "XIII століття, 1241 рік",
+      "type": "factual",
+      "category": "setting",
+      "difficulty": "medium",
+      "notes": "Historical timeframe"
+    },
+    {
+      "id": "fact-006",
+      "question": "Хто напав на тухольську громаду?",
+      "reference_answer": "Монголи, монгольська орда",
+      "type": "factual",
+      "category": "plot",
+      "difficulty": "easy",
+      "notes": "Central conflict"
+    },
+    {
+      "id": "fact-007",
+      "question": "Хто зрадив тухольську громаду?",
+      "reference_answer": "Тугар Вовк",
+      "type": "factual",
+      "category": "plot",
+      "difficulty": "medium",
+      "notes": "Key plot point — betrayal"
+    },
+    {
+      "id": "fact-008",
+      "question": "Як загинув Тугар Вовк?",
+      "reference_answer": "Тугар Вовк загинув під час битви з тухольцями.",
+      "type": "open-ended",
+      "category": "plot",
+      "difficulty": "medium",
+      "notes": "Reclassified — answer may describe circumstances in detail"
+    },
+    {
+      "id": "fact-009",
+      "question": "Хто такий Бурунда?",
+      "reference_answer": "Бурунда — монгольський воєначальник, який командує ордою і нападає на тухольську громаду.",
+      "type": "open-ended",
+      "category": "character",
+      "difficulty": "medium",
+      "notes": "Reclassified — 'who is X' invites descriptive answer"
+    },
+    {
+      "id": "fact-010",
+      "question": "Що таке віче в контексті повісті?",
+      "reference_answer": "Віче — народні збори тухольської громади, де приймаються спільні рішення демократичним шляхом.",
+      "type": "open-ended",
+      "category": "setting",
+      "difficulty": "medium",
+      "notes": "Reclassified — definition questions invite explanation"
+    },
+    {
+      "id": "fact-011",
+      "question": "Як тухольці перемогли монголів?",
+      "reference_answer": "Тухольці затопили монгольський табір, перегородивши річку і спрямувавши воду на ворогів.",
+      "type": "open-ended",
+      "category": "plot",
+      "difficulty": "hard",
+      "notes": "Reclassified — battle description invites detailed answer"
+    },
+    {
+      "id": "fact-012",
+      "question": "Хто врятував Максима з монгольського полону?",
+      "reference_answer": "Мирослава допомогла визволити Максима",
+      "type": "factual",
+      "category": "plot",
+      "difficulty": "hard",
+      "notes": "Specific plot event requiring precise retrieval"
+    },
+    {
+      "id": "fact-013",
+      "question": "Яке заняття було у тухольців?",
+      "reference_answer": "Тухольці займалися скотарством, полюванням, землеробством та іншими промислами в Карпатах.",
+      "type": "open-ended",
+      "category": "setting",
+      "difficulty": "medium",
+      "notes": "Reclassified — multiple valid answers, LLM may list different occupations"
+    },
+    {
+      "id": "plot-001",
+      "question": "Як починається повість?",
+      "reference_answer": "Повість починається з опису Тухольщини та знайомства з громадою",
+      "type": "open-ended",
+      "category": "plot",
+      "difficulty": "easy",
+      "notes": "Tests retrieval from early pages"
+    },
+    {
+      "id": "plot-002",
+      "question": "Які основні конфлікти є в повісті?",
+      "reference_answer": "Конфлікт між тухольською громадою і монгольською ордою, конфлікт між демократичними принципами громади і феодальними амбіціями Тугара Вовка",
+      "type": "open-ended",
+      "category": "plot",
+      "difficulty": "hard",
+      "notes": "Multi-layered answer requiring synthesis"
+    },
+    {
+      "id": "plot-003",
+      "question": "Чим закінчується повість?",
+      "reference_answer": "Тухольці перемагають монголів, затопивши їх табір. Захар Беркут гине як герой.",
+      "type": "open-ended",
+      "category": "plot",
+      "difficulty": "medium",
+      "notes": "Tests retrieval from final pages"
+    },
+    {
+      "id": "char-001",
+      "question": "Опишіть характер Захара Беркута",
+      "reference_answer": "Захар Беркут — мудрий, справедливий старійшина, який цінує громадські інтереси понад усе. Він — символ народної мудрості та демократичних цінностей.",
+      "type": "open-ended",
+      "category": "character",
+      "difficulty": "medium",
+      "notes": "Character analysis — tests thematic understanding"
+    },
+    {
+      "id": "char-002",
+      "question": "Як розвиваються стосунки Максима і Мирослави?",
+      "reference_answer": "Максим і Мирослава кохають одне одного, незважаючи на те що Мирослава — дочка Тугара Вовка, ворога громади. Їхнє кохання долає перешкоди.",
+      "type": "open-ended",
+      "category": "character",
+      "difficulty": "hard",
+      "notes": "Multi-chunk synthesis — romance subplot across several chapters"
+    },
+    {
+      "id": "char-003",
+      "question": "Чому Тугар Вовк зрадив свій народ?",
+      "reference_answer": "Тугар Вовк зрадив через свої феодальні амбіції та жагу до влади. Він хотів стати боярином і правити, а не підкорятися демократичним рішенням громади.",
+      "type": "open-ended",
+      "category": "character",
+      "difficulty": "hard",
+      "notes": "Motivation analysis — tests deep comprehension"
+    },
+    {
+      "id": "theme-001",
+      "question": "Яку роль відіграє громада в повісті?",
+      "reference_answer": "Громада є центральною ідеєю повісті. Франко протиставляє демократичний устрій тухольської громади феодальним амбіціям. Громада приймає рішення спільно через віче.",
+      "type": "open-ended",
+      "category": "theme",
+      "difficulty": "hard",
+      "notes": "Central thematic question — low similarity scores expected"
+    },
+    {
+      "id": "theme-002",
+      "question": "Як Франко протиставляє демократію і феодалізм у повісті?",
+      "reference_answer": "Демократична тухольська громада з вічем і виборними старійшинами протиставлена феодальному устрою з боярами. Тугар Вовк уособлює феодальні амбіції, а Захар Беркут — демократичні цінності.",
+      "type": "open-ended",
+      "category": "theme",
+      "difficulty": "hard",
+      "notes": "Abstract thematic comparison — tests reranking need"
+    },
+    {
+      "id": "theme-003",
+      "question": "Яке значення природи в повісті?",
+      "reference_answer": "Природа Карпат відіграє важливу роль — гори, ліси, річки є не лише фоном, а активними учасниками подій. Річка стає зброєю проти монголів.",
+      "type": "open-ended",
+      "category": "theme",
+      "difficulty": "hard",
+      "notes": "Nature as theme — scattered across many chapters"
+    },
+    {
+      "id": "theme-004",
+      "question": "Яке ідейне значення повісті для українського народу?",
+      "reference_answer": "Повість прославляє єдність народу, демократичні традиції, готовність боротися за свободу. Франко показує, що сила народу — в єдності та спільному вирішенні проблем.",
+      "type": "open-ended",
+      "category": "theme",
+      "difficulty": "hard",
+      "notes": "High-level literary analysis — may go beyond retrieved context"
+    },
+    {
+      "id": "theme-005",
+      "question": "Як у повісті зображено патріотизм?",
+      "reference_answer": "Патріотизм зображено через готовність тухольців захищати свою землю, жертвувати собою заради громади. Захар Беркут та Максим — приклади справжніх патріотів.",
+      "type": "open-ended",
+      "category": "theme",
+      "difficulty": "medium",
+      "notes": "Thematic question with concrete character examples"
+    },
+    {
+      "id": "style-001",
+      "question": "Якими художніми засобами користується Франко в повісті?",
+      "reference_answer": "Франко використовує яскраві описи природи, фольклорні елементи, народну мову, історичні паралелі, контраст між добром і злом.",
+      "type": "open-ended",
+      "category": "style",
+      "difficulty": "hard",
+      "notes": "Literary style analysis — scattered evidence"
+    },
+    {
+      "id": "style-002",
+      "question": "Яку роль відіграють народні пісні та перекази в повісті?",
+      "reference_answer": "Франко включає фольклорні елементи для створення автентичної атмосфери та зв'язку з народними традиціями.",
+      "type": "open-ended",
+      "category": "style",
+      "difficulty": "hard",
+      "notes": "Folklore elements — may require specific page retrieval"
+    },
+    {
+      "id": "trap-001",
+      "question": "Чи є Захар Беркут реальною історичною особою?",
+      "reference_answer": "Захар Беркут — літературний персонаж, створений Іваном Франком. Це вигаданий герой повісті.",
+      "type": "open-ended",
+      "category": "off-topic-trap",
+      "difficulty": "medium",
+      "notes": "Must stay grounded in book context, not speculate about real people"
+    },
+    {
+      "id": "trap-002",
+      "question": "Коли вийшов фільм Захар Беркут?",
+      "reference_answer": "Це питання не стосується змісту повісті Івана Франка. Не знаю відповіді на основі контексту.",
+      "type": "open-ended",
+      "category": "off-topic-trap",
+      "difficulty": "hard",
+      "notes": "Should trigger 'I don't know' — judge checks groundedness"
+    },
+    {
+      "id": "plot-004",
+      "question": "Що сталося з Максимом після перемоги?",
+      "reference_answer": "Після перемоги над монголами Максим залишився з громадою",
+      "type": "open-ended",
+      "category": "plot",
+      "difficulty": "medium",
+      "notes": "Post-climax events — tests retrieval from ending"
+    },
+    {
+      "id": "char-004",
+      "question": "Яку роль відіграє Мирослава в сюжеті повісті?",
+      "reference_answer": "Мирослава — дочка Тугара Вовка, кохана Максима. Вона розривається між вірністю батькові та коханням до Максима. Врешті обирає сторону громади.",
+      "type": "open-ended",
+      "category": "character",
+      "difficulty": "medium",
+      "notes": "Character role analysis — multi-chapter arc"
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "run_id": "eval_20260504_151925",
+  "timestamp": "2026-05-04T15:19:25.030461+00:00",
+  "config": {
+    "model": "gemini-2.5-flash",
+    "embeddings": "gemini-embedding-2",
+    "k": 12,
+    "min_score": 0.55
+  },
+  "summary": {
+    "total_questions": 2,
+    "factual_count": 1,
+    "open_ended_count": 1,
+    "factual_accuracy": 1.0,
+    "open_ended_quality": 0.8667,
+    "avg_retrieval_utilization": 0.1111,
+    "off_topic_rate": 0.0,
+    "latency_p50_ms": 12859,
+    "latency_p95_ms": 12859
+  },
+  "results": [
+    {
+      "id": "fact-001",
+      "question": "Хто такий Захар Беркут?",
+      "reference_answer": "Захар Беркут — старійшина тухольської громади, мудрий лідер, який керує громадою і захищає її інтереси.",
+      "predicted_answer": "Захар Беркут є головним героєм однойменної книги І. Я. Франка (стор. 4). Він є мудрим лідером тухольської громади, який глибоко розуміє важливість подій, що впливають на долю його народу, і бачить, що на кону стоїть \"ціле діло його життя\" (стор. 5). Захар Беркут виступає за справедливість та громадський розум, наполягаючи на тому, щоб нікого не засуджувати без вислуховування його виправдання і закликаючи боярина на громадський копний суд (стор. 7). Він також керує людьми під час важливих робіт, наприклад, при переміщенні каменя (стор. 3).",
+      "type": "open-ended",
+      "category": "character",
+      "difficulty": "easy",
+      "scores": {
+        "correctness": 5,
+        "completeness": 5,
+        "groundedness": 3,
+        "explanation": "The answer correctly and completely describes Zakhar Berkut's role, but it hallucinates several page numbers and makes one inferred claim not explicitly stated in the provided context.",
+        "composite_score": 0.8667
+      },
+      "retrieval": {
+        "num_chunks": 9,
+        "avg_similarity": 0.6279,
+        "max_similarity": 0.7291,
+        "min_similarity": 0.556,
+        "utilization": 0.2222,
+        "utilized_count": 2,
+        "sub_queries": [
+          "Хто такий Захар Беркут?",
+          "Яку роль відігравав Захар Беркут у житті тухольської громади та які принципи він сповідував?",
+          "Як Захар Беркут реагував на випробування, що спіткали його родину та громаду, і які рішення він приймав?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 12263,
+      "ragas": {
+        "faithfulness": null,
+        "context_recall": null,
+        "ragas_score": null
+      }
+    },
+    {
+      "id": "fact-002",
+      "question": "Як звати сина Захара Беркута?",
+      "reference_answer": "Максим",
+      "predicted_answer": "Сина Захара Беркута звати Максим. Він згадується як полоняник, якого монголи погрожують убити, якщо тухольці не відпустять їх (стор. 5).",
+      "type": "factual",
+      "category": "character",
+      "difficulty": "easy",
+      "scores": {
+        "containment": true,
+        "token_overlap": 0.0,
+        "score": 1.0
+      },
+      "retrieval": {
+        "num_chunks": 9,
+        "avg_similarity": 0.6205,
+        "max_similarity": 0.6996,
+        "min_similarity": 0.5507,
+        "utilization": 0.0,
+        "utilized_count": 0,
+        "sub_queries": [
+          "Як звати сина Захара Беркута?",
+          "Які стосунки пов'язували сина Захара Беркута з Мирославою?",
+          "Яку роль відіграв син Захара Беркута в обороні Тухольщини від монголів?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 12859,
+      "ragas": {
+        "faithfulness": null,
+        "context_recall": null,
+        "ragas_score": null
+      }
+    }
+  ]
+}

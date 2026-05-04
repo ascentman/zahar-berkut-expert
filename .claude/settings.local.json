@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "mcp__plugin_context-mode_context-mode__ctx_execute",
-      "Bash(pip show *)"
+      "Bash(pip show *)",
+      "mcp__plugin_context-mode_context-mode__ctx_batch_execute",
+      "Bash(uv run *)",
+      "mcp__plugin_context7_context7__resolve-library-id",
+      "mcp__plugin_context7_context7__query-docs"
     ]
   }
 }

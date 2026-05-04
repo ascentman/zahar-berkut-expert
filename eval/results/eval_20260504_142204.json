@@ -1,0 +1,125 @@
+{
+  "run_id": "eval_20260504_142204",
+  "timestamp": "2026-05-04T14:22:04.936973+00:00",
+  "config": {
+    "model": "gemini-2.5-flash",
+    "embeddings": "gemini-embedding-2",
+    "k": 8,
+    "min_score": 0.55
+  },
+  "summary": {
+    "total_questions": 3,
+    "factual_count": 3,
+    "open_ended_count": 0,
+    "factual_accuracy": 0.3333,
+    "open_ended_quality": 0,
+    "avg_retrieval_utilization": 0.0833,
+    "off_topic_rate": 0.0,
+    "latency_p50_ms": 12765,
+    "latency_p95_ms": 12821
+  },
+  "results": [
+    {
+      "id": "fact-001",
+      "question": "Хто такий Захар Беркут?",
+      "reference_answer": "Захар Беркут — старійшина тухольської громади, батько Максима",
+      "predicted_answer": "Захар Беркут є лідером, який відіграє ключову роль у громаді. Він керує людьми, даючи вказівки під час важливих робіт, таких як переміщення каменя (\"Воля його, діти! - сказав Захар,\" \"Беріться за линви, всі, хто може досягнути! За підойми, хлопці! - розказував Захар,\" \"Далі, дружною силою! - крикнув Захар,\" \"Ще раз! Дужче натискайте! - кричав Захар і сам принявся за линву\" - стор. 3). Він глибоко розуміє важливість подій, що відбуваються, і бачить, що на кону стоїть \"ціле діло його життя\" у громадському суді. Захар довіряє громадському розуму і усвідомлює, що рішення суду щодо боярина може загрожувати громаді великою небезпекою (стор. 5).",
+      "type": "factual",
+      "category": "character",
+      "difficulty": "easy",
+      "scores": {
+        "containment": false,
+        "token_overlap": 0.2857,
+        "score": 0.2857
+      },
+      "retrieval": {
+        "num_chunks": 8,
+        "avg_similarity": 0.6369,
+        "max_similarity": 0.7291,
+        "min_similarity": 0.5808,
+        "utilization": 0.25,
+        "utilized_count": 2,
+        "sub_queries": [
+          "Хто такий Захар Беркут?",
+          "Яку роль відігравав Захар Беркут у житті тухольської громади та які принципи він сповідував?",
+          "Як Захар Беркут реагував на випробування, що спіткали його родину та громаду, і які рішення він приймав?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 12765
+    },
+    {
+      "id": "fact-002",
+      "question": "Як звати синів Захара Беркута?",
+      "reference_answer": "Максим",
+      "predicted_answer": "Наданий контекст не містить інформації про імена синів Захара Беркута. Згадується лише \"вашого сина\" у контексті погрози монголів (стор. 16 ч. 1), але його ім'я не вказано.",
+      "type": "factual",
+      "category": "character",
+      "difficulty": "easy",
+      "scores": {
+        "containment": false,
+        "token_overlap": 0.0,
+        "score": 0.0
+      },
+      "retrieval": {
+        "num_chunks": 8,
+        "avg_similarity": 0.6263,
+        "max_similarity": 0.7044,
+        "min_similarity": 0.5526,
+        "utilization": 0.0,
+        "utilized_count": 0,
+        "sub_queries": [
+          "Як звати синів Захара Беркута?",
+          "Яку роль відіграли сини Захара Беркута в обороні Тухлі від монголів?",
+          "Яка доля спіткала синів Захара Беркута під час монгольської навали?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 12821
+    },
+    {
+      "id": "fact-003",
+      "question": "Хто є батьком Мирослави?",
+      "reference_answer": "Тугар Вовк",
+      "predicted_answer": "Батьком Мирослави є Тугар Вовк (сторінки 5, 6).",
+      "type": "factual",
+      "category": "character",
+      "difficulty": "easy",
+      "scores": {
+        "containment": true,
+        "token_overlap": 1.0,
+        "score": 1.0
+      },
+      "retrieval": {
+        "num_chunks": 8,
+        "avg_similarity": 0.6383,
+        "max_similarity": 0.7292,
+        "min_similarity": 0.5595,
+        "utilization": 0.0,
+        "utilized_count": 0,
+        "sub_queries": [
+          "Хто є батьком Мирослави?",
+          "Які стосунки пов'язують Мирославу з Максимом Беркутом?",
+          "Яку роль відіграє Тугар Вовк у конфлікті між тухольцями та монголами?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 10362
+    }
+  ]
+}

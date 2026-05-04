@@ -15,99 +15,17 @@
 import os
 import time
 
-import pypdf
 import streamlit as st
 from dotenv import load_dotenv
-from langchain_community.document_loaders import PyPDFLoader
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_google_genai import GoogleGenerativeAIEmbeddings, ChatGoogleGenerativeAI
-from langchain_qdrant import QdrantVectorStore
-from langchain_classic.chains import create_retrieval_chain
-from langchain_classic.chains.combine_documents import create_stuff_documents_chain
-from langchain_core.prompts import ChatPromptTemplate
 
+from chain_factory import create_retrieval_chain_headless
 from chunk_utilization import check_utilization, UTILIZATION_THRESHOLD
-from rag_logger import InstrumentedRetriever, RAGLogger
 
-def load_zahar_berkut_script():
-    # Use a path relative to the script's directory for portability
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    pdf_path = os.path.join(base_dir, "full-text.pdf")
-
-    # Extract title from PDF metadata using pypdf
-    reader = pypdf.PdfReader(pdf_path)
-    title = reader.metadata.title or "Захар Беркут"
-
-    # Initialize the PDF loader
-    loader = PyPDFLoader(pdf_path)
-
-    # Load the PDF (one LangChain Document per page)
-    documents = loader.load()
-
-    # Add the document title to each page's metadata before splitting
-    for doc in documents:
-        doc.metadata["document_title"] = title
-
-    # Split documents into smaller chunks
-    text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=1000,      # Smaller chunks = less noise per chunk, better score precision
-        chunk_overlap=200,    # 20% overlap preserved
-        add_start_index=True, # Adds the character position in the original page to metadata
-            separators=["\n\n", "\n", ". ", "! ", "? ", " ", ""], # Покращені сепаратори для української мови
-    )
-
-    return text_splitter.split_documents(documents), title
 
 @st.cache_resource
 def init_retrieval_chain(api_key):
     """Initialize and cache the retrieval chain to prevent locking errors and redundant loading."""
-    embeddings = GoogleGenerativeAIEmbeddings(model="gemini-embedding-2", google_api_key=api_key)
-    persist_path = "./qdrant_db"
-
-    # Attempt to load existing collection; fallback to creation if invalid/missing/locked
-    vector_store = None
-    if os.path.exists(persist_path) and os.path.isdir(persist_path):
-        try:
-            vector_store = QdrantVectorStore.from_existing_collection(
-                embedding=embeddings,
-                path=persist_path,
-                collection_name="zahar_berkut",
-            )
-        except Exception:
-            # If loading fails (corrupted or incompatible files), we fall back to document recreation
-            vector_store = None
-
-    if vector_store is None:
-        chunks, _ = load_zahar_berkut_script()
-        vector_store = QdrantVectorStore.from_documents(
-            chunks,
-            embeddings,
-            path=persist_path,
-            collection_name="zahar_berkut",
-        )
-
-    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0, google_api_key=api_key)
-
-    prompt = ChatPromptTemplate.from_template("""
-    You are an expert on the book "Захар Беркут".
-    Use the following pieces of retrieved context to answer the question.
-    If the answer is partly contained, provide the best possible answer based on text in the context.
-    If you don't know the answer based on the context, say that you don't know.
-    Reference the page numbers from the context that you used in your answer.
-
-    Context:
-    {context}
-
-    Question: {input}
-
-    Answer:""")
-
-    combine_docs_chain = create_stuff_documents_chain(llm, prompt)
-    retriever = InstrumentedRetriever(vector_store=vector_store, llm=llm, k=8)
-    logger = RAGLogger()
-    chain = create_retrieval_chain(retriever, combine_docs_chain)
-
-    return chain, retriever, logger
+    return create_retrieval_chain_headless(api_key)
 
 
 def main():
