@@ -1,0 +1,1239 @@
+{
+  "run_id": "eval_20260504_203650",
+  "timestamp": "2026-05-04T20:36:50.418214+00:00",
+  "config": {
+    "model": "gemini-2.5-flash",
+    "embeddings": "gemini-embedding-2",
+    "k": 12,
+    "min_score": 0.55
+  },
+  "summary": {
+    "total_questions": 30,
+    "factual_count": 7,
+    "open_ended_count": 23,
+    "factual_accuracy": 0.4286,
+    "open_ended_quality": 0.6957,
+    "avg_retrieval_utilization": 0.0775,
+    "off_topic_rate": 0.0667,
+    "latency_p50_ms": 12283,
+    "latency_p95_ms": 25649
+  },
+  "results": [
+    {
+      "id": "fact-001",
+      "question": "Хто такий Захар Беркут?",
+      "reference_answer": "Захар Беркут — старійшина тухольської громади, мудрий лідер, який керує громадою і захищає її інтереси.",
+      "predicted_answer": "Захар Беркут є лідером тухольської громади, який глибоко розуміє важливість подій, що стосуються її устрою, і все його життя присвячене відновленню та підтримці вільного громадського устрою (с. 5). Він виступає за справедливість і належний процес, наполягаючи на тому, щоб нікого не засуджувати без вислуховування його виправдання та закликаючи боярина на громадський копний суд (с. 7). Захар також керує людьми під час важливих робіт, даючи вказівки, наприклад, під час переміщення каменя Сторожа (с. 3).",
+      "type": "open-ended",
+      "category": "character",
+      "difficulty": "easy",
+      "scores": {
+        "correctness": 5,
+        "completeness": 5,
+        "groundedness": 3,
+        "explanation": "The system answer accurately and completely describes Zahar Berkut's role as a wise leader who manages the community and protects its interests, though some specific claims about his insistence on due process are not explicitly supported by the provided context.",
+        "composite_score": 0.8667
+      },
+      "retrieval": {
+        "num_chunks": 9,
+        "avg_similarity": 0.6279,
+        "max_similarity": 0.7291,
+        "min_similarity": 0.556,
+        "utilization": 0.2222,
+        "utilized_count": 2,
+        "sub_queries": [
+          "Хто такий Захар Беркут?",
+          "Яку роль відігравав Захар Беркут у житті тухольської громади та які принципи він сповідував?",
+          "Як Захар Беркут реагував на випробування, що спіткали його родину та громаду, і які рішення він приймав?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 14027,
+      "ragas": {
+        "faithfulness": 1.0,
+        "context_recall": 1.0,
+        "ragas_score": 1.0
+      }
+    },
+    {
+      "id": "fact-002",
+      "question": "Як звати сина Захара Беркута?",
+      "reference_answer": "Максим",
+      "predicted_answer": "Сина Захара Беркута звати Максим. Це випливає з того, що Бурунда тримає Максима в полоні, а Тугар Вовк, звертаючись до тухольців, погрожує смертю їхнього сина, якщо їхні вимоги не будуть виконані (стор. 4).",
+      "type": "factual",
+      "category": "character",
+      "difficulty": "easy",
+      "scores": {
+        "containment": true,
+        "token_overlap": 0.0,
+        "score": 1.0
+      },
+      "retrieval": {
+        "num_chunks": 7,
+        "avg_similarity": 0.6345,
+        "max_similarity": 0.6978,
+        "min_similarity": 0.5693,
+        "utilization": 0.0,
+        "utilized_count": 0,
+        "sub_queries": [
+          "Як звати сина Захара Беркута?",
+          "Яку роль відіграв син Захара Беркута у захисті Тухольщини від монголів?",
+          "Які риси характеру виявив син Захара Беркута під час випробувань?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 12878,
+      "ragas": {
+        "faithfulness": 0.6667,
+        "context_recall": 0.0,
+        "ragas_score": 0.3333
+      }
+    },
+    {
+      "id": "fact-003",
+      "question": "Хто є батьком Мирослави?",
+      "reference_answer": "Тугар Вовк",
+      "predicted_answer": "Батьком Мирослави є Тугар Вовк. Це видно з діалогу, де Мирослава звертається до нього як до \"таточку\", а він називає її \"доньки\" (Контекст, що починається з \"хольський вовк...\" і закінчується \"...заливаючися слі-\"). Також, коли Мирослава зблідла від слів, вона \"позирала то на батька, то на Максима\", що підтверджує, що Тугар Вовк є її батьком (Контекст, що починається з \"нього очей...\" і закінчується \"...мій\").",
+      "type": "factual",
+      "category": "character",
+      "difficulty": "easy",
+      "scores": {
+        "containment": true,
+        "token_overlap": 1.0,
+        "score": 1.0
+      },
+      "retrieval": {
+        "num_chunks": 9,
+        "avg_similarity": 0.6288,
+        "max_similarity": 0.7292,
+        "min_similarity": 0.5522,
+        "utilization": 0.0,
+        "utilized_count": 0,
+        "sub_queries": [
+          "Хто є батьком Мирослави?",
+          "Які стосунки пов'язують Мирославу з Максимом Беркутом?",
+          "Яку роль відіграє Тугар Вовк у конфлікті між тухольцями та монголами?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 14731,
+      "ragas": {
+        "faithfulness": 0.8333,
+        "context_recall": 1.0,
+        "ragas_score": 0.9166
+      }
+    },
+    {
+      "id": "fact-004",
+      "question": "Де відбуваються події повісті?",
+      "reference_answer": "Тухольщина, Карпати",
+      "predicted_answer": "Події повісті відбуваються в Тухольській громаді, що знаходиться в Карпатській Русі у XIII столітті (сторінки 3, 4, 5, 6, 7).",
+      "type": "factual",
+      "category": "setting",
+      "difficulty": "easy",
+      "scores": {
+        "containment": false,
+        "token_overlap": 0.0,
+        "score": 0.0
+      },
+      "retrieval": {
+        "num_chunks": 9,
+        "avg_similarity": 0.6145,
+        "max_similarity": 0.6738,
+        "min_similarity": 0.559,
+        "utilization": 0.1111,
+        "utilized_count": 1,
+        "sub_queries": [
+          "Де відбуваються події повісті?",
+          "Які стосунки пов'язують Максима Беркута та Мирославу?",
+          "Як тухольська громада організувала опір монгольській навалі?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 11049,
+      "ragas": {
+        "faithfulness": 0.75,
+        "context_recall": 1.0,
+        "ragas_score": 0.875
+      }
+    },
+    {
+      "id": "fact-005",
+      "question": "В якому столітті відбуваються події повісті?",
+      "reference_answer": "XIII століття, 1241 рік",
+      "predicted_answer": "Наданий контекст не містить інформації про століття, в якому відбуваються події повісті.",
+      "type": "factual",
+      "category": "setting",
+      "difficulty": "medium",
+      "scores": {
+        "containment": false,
+        "token_overlap": 0.3333,
+        "score": 0.3333
+      },
+      "retrieval": {
+        "num_chunks": 7,
+        "avg_similarity": 0.6411,
+        "max_similarity": 0.7171,
+        "min_similarity": 0.5641,
+        "utilization": 0.0,
+        "utilized_count": 0,
+        "sub_queries": [
+          "В якому столітті відбуваються події повісті?",
+          "Які риси характеру Захара Беркута роблять його лідером громади?",
+          "Яким чином тухольці змогли зупинити монгольську навалу?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 9754,
+      "ragas": {
+        "faithfulness": 1.0,
+        "context_recall": 0.0,
+        "ragas_score": 0.5
+      }
+    },
+    {
+      "id": "fact-006",
+      "question": "Хто напав на тухольську громаду?",
+      "reference_answer": "Монголи, монгольська орда",
+      "predicted_answer": "На тухольську громаду напали монголи, яких очолював Бурунда-бегадир. Це видно з опису битви, де тухольці борються проти \"напасників\" та \"ворога\", а також згадується \"жалібне виття монголів і грімкі страшні прокляття Бурунди-бегадира\". Бурунда-бегадир також звинувачує Тугара Вовка, кажучи: \"Ти запровадив нас у сесю западню, відки ми вийти не можемо!\" (Третій абзац контексту).",
+      "type": "factual",
+      "category": "plot",
+      "difficulty": "easy",
+      "scores": {
+        "containment": false,
+        "token_overlap": 0.3333,
+        "score": 0.3333
+      },
+      "retrieval": {
+        "num_chunks": 4,
+        "avg_similarity": 0.6672,
+        "max_similarity": 0.7009,
+        "min_similarity": 0.6063,
+        "utilization": 0.0,
+        "utilized_count": 0,
+        "sub_queries": [
+          "Хто напав на тухольську громаду?",
+          "Яка була роль Тугара Вовка в організації нападу на Тухольщину?",
+          "Які стратегії оборони застосували тухольці, щоб відбити напад ворогів?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 11555,
+      "ragas": {
+        "faithfulness": 0.9,
+        "context_recall": 1.0,
+        "ragas_score": 0.95
+      }
+    },
+    {
+      "id": "fact-007",
+      "question": "Хто зрадив тухольську громаду?",
+      "reference_answer": "Тугар Вовк",
+      "predicted_answer": "Бурунда-бегадир звинувачує Тугара Вовка, називаючи його \"подвійним зрадником\" і стверджуючи, що це його вина, що вони (монголи) потрапили в пастку, з якої не можуть вийти (стор. 3). Це вказує на те, що Тугар Вовк є зрадником, хоча в цьому конкретному випадку Бурунда звинувачує його у зраді монголів, які були ворогами тухольської громади. Також Тугар Вовк перебуває у конфлікті з громадою щодо землі та не визнає їхнього громадського суду (стор. 4).",
+      "type": "factual",
+      "category": "plot",
+      "difficulty": "medium",
+      "scores": {
+        "containment": true,
+        "token_overlap": 1.0,
+        "score": 1.0
+      },
+      "retrieval": {
+        "num_chunks": 5,
+        "avg_similarity": 0.6128,
+        "max_similarity": 0.6785,
+        "min_similarity": 0.5512,
+        "utilization": 0.0,
+        "utilized_count": 0,
+        "sub_queries": [
+          "Хто зрадив тухольську громаду?",
+          "Якими мотивами керувався той, хто зрадив тухольську громаду?",
+          "Які наслідки мала зрада для оборони тухольської долини?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 30709,
+      "ragas": {
+        "faithfulness": 0.8182,
+        "context_recall": 0.0,
+        "ragas_score": 0.4091
+      }
+    },
+    {
+      "id": "fact-008",
+      "question": "Як загинув Тугар Вовк?",
+      "reference_answer": "Тугар Вовк загинув під час битви з тухольцями.",
+      "predicted_answer": "Наданий контекст не містить інформації про те, як загинув Тугар Вовк. У тексті згадується, що Бурунда-бегадир звинувачував його у зраді, але його смерть не описана (стор. 3).",
+      "type": "open-ended",
+      "category": "plot",
+      "difficulty": "medium",
+      "scores": {
+        "correctness": 1,
+        "completeness": 1,
+        "groundedness": 3,
+        "explanation": "The system incorrectly states that the context does not contain information about Tugar Vovk's death, directly contradicting the reference, and provides an incorrect page number for its claim, though it correctly identifies Burunda's accusation.",
+        "composite_score": 0.3333
+      },
+      "retrieval": {
+        "num_chunks": 6,
+        "avg_similarity": 0.6401,
+        "max_similarity": 0.7184,
+        "min_similarity": 0.5616,
+        "utilization": 0.0,
+        "utilized_count": 0,
+        "sub_queries": [
+          "Як загинув Тугар Вовк?",
+          "Опишіть останню битву, в якій загинув Тугар Вовк.",
+          "Яку роль відіграв Тугар Вовк у конфлікті між тухольцями та монголами, що призвело до його кінця?"
+        ],
+        "sub_queries_on_topic": [
+          false,
+          false,
+          true
+        ],
+        "off_topic_count": 2
+      },
+      "latency_ms": 11390,
+      "ragas": {
+        "faithfulness": 1.0,
+        "context_recall": 0.0,
+        "ragas_score": 0.5
+      }
+    },
+    {
+      "id": "fact-009",
+      "question": "Хто такий Бурунда?",
+      "reference_answer": "Бурунда — монгольський воєначальник, який командує ордою і нападає на тухольську громаду.",
+      "predicted_answer": "Бурунда - це Бурунда-бегадир, який був розлючений і проклинав Тугара Вовка, звинувачуючи його в тому, що він завів їх у пастку. Він скакав по майдані \"мов скажений, рвучи собі волосся з голови\", і \"нетямлячись з лютості, з голою шаблею прискочив до Тугара Вовка\" (стор. 3).",
+      "type": "open-ended",
+      "category": "character",
+      "difficulty": "medium",
+      "scores": {
+        "correctness": 2,
+        "completeness": 1,
+        "groundedness": 4,
+        "explanation": "The system answer accurately describes Burunda's rage and accusation against Tugar Vovk, which is grounded in the context, but it fails to address his identity as a Mongol warlord commanding the horde and attacking the community, as stated in the reference.",
+        "composite_score": 0.4667
+      },
+      "retrieval": {
+        "num_chunks": 3,
+        "avg_similarity": 0.6132,
+        "max_similarity": 0.6408,
+        "min_similarity": 0.589,
+        "utilization": 0.0,
+        "utilized_count": 0,
+        "sub_queries": [
+          "Хто такий Бурунда?",
+          "Які руйнівні дії Бурунда вчиняє під час облоги Тухольщини?",
+          "Як тухольці змогли здолати військо Бурунди?"
+        ],
+        "sub_queries_on_topic": [
+          false,
+          true,
+          true
+        ],
+        "off_topic_count": 1
+      },
+      "latency_ms": 11424,
+      "ragas": {
+        "faithfulness": 1.0,
+        "context_recall": 1.0,
+        "ragas_score": 1.0
+      }
+    },
+    {
+      "id": "fact-010",
+      "question": "Що таке віче в контексті повісті?",
+      "reference_answer": "Віче — народні збори тухольської громади, де приймаються спільні рішення демократичним шляхом.",
+      "predicted_answer": "У наданому контексті термін \"віче\" не згадується прямо. Однак, текст описує \"тухольський копний суд\" та \"громадський засуд\", де \"тухольська громада\" збирається \"при повнім спокою й розвазі\" для прийняття важливих рішень та винесення вироків. Захар Беркут покладався на \"громадський розум\" цього зібрання, яке розглядало справи, що мали велике значення для громади (Сторінка 4). Це зібрання, хоч і не назване \"віче\", виконує функції, подібні до народного віча – тобто, зборів громади для вирішення спільних справ.",
+      "type": "open-ended",
+      "category": "setting",
+      "difficulty": "medium",
+      "scores": {
+        "correctness": 5,
+        "completeness": 5,
+        "groundedness": 3,
+        "explanation": "The system accurately describes the function of the Tukhlya assembly, aligning with the definition of 'віче' from the reference, but incorrectly cites 'Сторінка 4' instead of 'Сторінка 47' from the provided context.",
+        "composite_score": 0.8667
+      },
+      "retrieval": {
+        "num_chunks": 4,
+        "avg_similarity": 0.5952,
+        "max_similarity": 0.616,
+        "min_similarity": 0.5694,
+        "utilization": 0.0,
+        "utilized_count": 0,
+        "sub_queries": [
+          "Що таке віче в контексті повісті?",
+          "Яке значення має віче для тухольської громади та її самоврядування?",
+          "Які ключові рішення або конфлікти розгорталися на тухольському вічі?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 11488,
+      "ragas": {
+        "faithfulness": 0.8333,
+        "context_recall": 1.0,
+        "ragas_score": 0.9166
+      }
+    },
+    {
+      "id": "fact-011",
+      "question": "Як тухольці перемогли монголів?",
+      "reference_answer": "Тухольці затопили монгольський табір, перегородивши річку і спрямувавши воду на ворогів.",
+      "predicted_answer": "Тухольці перемогли монголів, атакуючи їх списами, коли ті піднімалися драбинами. Ворог падав додолу, а на купу живих і мертвих тіл тухольці скидали згори величезні брили каміння (стор. 3). Для цього вони заздалегідь підкопували основу великого каменя (\"Сторожа\") та підкладали підойми, щоб обалити його поперек тіснини (стор. 2).",
+      "type": "open-ended",
+      "category": "plot",
+      "difficulty": "hard",
+      "scores": {
+        "correctness": 2,
+        "completeness": 1,
+        "groundedness": 5,
+        "explanation": "The system answer describes a different method of defeating the Mongols (spears and rockfall) than the one mentioned in the reference (flooding the camp), thus missing the core information of the reference, although its claims are fully grounded in the provided context.",
+        "composite_score": 0.5333
+      },
+      "retrieval": {
+        "num_chunks": 6,
+        "avg_similarity": 0.6381,
+        "max_similarity": 0.7192,
+        "min_similarity": 0.5529,
+        "utilization": 0.0,
+        "utilized_count": 0,
+        "sub_queries": [
+          "Як тухольці перемогли монголів?",
+          "Опишіть деталі пастки, яку тухольці влаштували для монгольського війська.",
+          "Яку роль відіграли знання місцевості та єдність громади у розгромі монгольської орди?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 12943,
+      "ragas": {
+        "faithfulness": 1.0,
+        "context_recall": 0.0,
+        "ragas_score": 0.5
+      }
+    },
+    {
+      "id": "fact-012",
+      "question": "Хто врятував Максима з монгольського полону?",
+      "reference_answer": "Мирослава допомогла визволити Максима",
+      "predicted_answer": "Наданий контекст не містить інформації про те, хто врятував Максима з монгольського полону.",
+      "type": "factual",
+      "category": "plot",
+      "difficulty": "hard",
+      "scores": {
+        "containment": false,
+        "token_overlap": 0.25,
+        "score": 0.25
+      },
+      "retrieval": {
+        "num_chunks": 4,
+        "avg_similarity": 0.6532,
+        "max_similarity": 0.6832,
+        "min_similarity": 0.5906,
+        "utilization": 0.0,
+        "utilized_count": 0,
+        "sub_queries": [
+          "Хто врятував Максима з монгольського полону?",
+          "Яким чином Мирослава сприяла визволенню Максима з полону?",
+          "Що було запропоновано монголам в обмін на свободу Максима?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 11517,
+      "ragas": {
+        "faithfulness": 1.0,
+        "context_recall": 0.0,
+        "ragas_score": 0.5
+      }
+    },
+    {
+      "id": "fact-013",
+      "question": "Яке заняття було у тухольців?",
+      "reference_answer": "Тухольці займалися скотарством, полюванням, землеробством та іншими промислами в Карпатах.",
+      "predicted_answer": "Згідно з наданим контекстом, тухольці були частиною самоврядної громади (\"тухольська громада\"), яка вирішувала свої справи через громадський суд (\"громадський суд\") (стор. 3, 4). Вони займалися спільною працею, наприклад, переміщенням каменя Сторожа (стор. 1), та обороною від нападників (стор. 2). Згадка про \"ліси й полонини\" (стор. 3) вказує на їхній зв'язок із землею та її ресурсами.",
+      "type": "open-ended",
+      "category": "setting",
+      "difficulty": "medium",
+      "scores": {
+        "correctness": 2,
+        "completeness": 1,
+        "groundedness": 5,
+        "explanation": "The system answer is fully grounded in the provided context but does not address the specific economic activities (animal husbandry, hunting, agriculture) mentioned in the reference answer, focusing instead on governance, communal work, and defense.",
+        "composite_score": 0.5333
+      },
+      "retrieval": {
+        "num_chunks": 6,
+        "avg_similarity": 0.6213,
+        "max_similarity": 0.6721,
+        "min_similarity": 0.5605,
+        "utilization": 0.0,
+        "utilized_count": 0,
+        "sub_queries": [
+          "Яке заняття було у тухольців?",
+          "Які особливості буденного життя тухольців описані в романі?",
+          "Які цінності були найважливішими для тухольської громади?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 16992,
+      "ragas": {
+        "faithfulness": 1.0,
+        "context_recall": 0.0,
+        "ragas_score": 0.5
+      }
+    },
+    {
+      "id": "plot-001",
+      "question": "Як починається повість?",
+      "reference_answer": "Повість починається з опису Тухольщини та знайомства з громадою",
+      "predicted_answer": "Я не можу відповісти на це питання, оскільки наданий контекст не містить інформації про те, як починається повість \"Захар Беркут\". Наведені уривки описують події, що відбуваються вже під час розвитку сюжету, такі як розмова батька з дитиною про подорож (стор. 1), обговорення важливого рішення громадою під проводом Захара Беркута (стор. 2), дії Захара щодо переміщення каменя Сторожа (стор. 3) та битва з монголами (стор. 4).",
+      "type": "open-ended",
+      "category": "plot",
+      "difficulty": "easy",
+      "scores": {
+        "correctness": 2,
+        "completeness": 1,
+        "groundedness": 3,
+        "explanation": "The system correctly states that the context does not contain the beginning of the novel, but it fails to provide the actual answer and hallucinates page numbers for the events it describes from the context.",
+        "composite_score": 0.4
+      },
+      "retrieval": {
+        "num_chunks": 4,
+        "avg_similarity": 0.5775,
+        "max_similarity": 0.6058,
+        "min_similarity": 0.5624,
+        "utilization": 0.0,
+        "utilized_count": 0,
+        "sub_queries": [
+          "Як починається повість?",
+          "Який початковий конфлікт або проблема розкривається на перших сторінках повісті?",
+          "Які ключові персонажі представлені читачеві на початку твору?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          false
+        ],
+        "off_topic_count": 1
+      },
+      "latency_ms": 10109,
+      "ragas": {
+        "faithfulness": 0.8571,
+        "context_recall": 0.0,
+        "ragas_score": 0.4285
+      }
+    },
+    {
+      "id": "plot-002",
+      "question": "Які основні конфлікти є в повісті?",
+      "reference_answer": "Конфлікт між тухольською громадою і монгольською ордою, конфлікт між демократичними принципами громади і феодальними амбіціями Тугара Вовка",
+      "predicted_answer": "На основі наданого контексту, в повісті \"Захар Беркут\" можна виділити такі основні конфлікти:\n\n1.  **Конфлікт між боярином Тугаром Вовком та тухольською громадою:**\n    *   Цей конфлікт виник через те, що Тугар Вовк присвоював собі громадський ліс і полонину, не питаючи дозволу громади (стор. 6).\n    *   Він переріс у \"правдиву війну\", де тухольці зганяли боярські стада, а боярські слуги — тухольські отари. Також були сварки та бійки між лісничими. Боярин наказував убивати тухольську худобу та жорстоко побив громадського лісничого (стор. 5).\n    *   Громада, у відповідь, розглядала можливість вигнати боярина зі своїх земель і зруйнувати його дім (стор. 5).\n    *   Захар Беркут, як лідер громади, відіграє ключову роль у цьому конфлікті, відстоюючи громадські права та готуючись до громадського суду над боярином (стор. 4, 6).\n\n2.  **Конфлікт між тухольською громадою та монгольськими нападниками:**\n    *   Описано пряму боротьбу тухольців проти ворога, який \"валиться долі драбиною додолу\" під натиском тухольців та величезних брил каміння (стор. 3).\n    *   Тухольці активно працюють над тим, щоб обвалити камінь \"Сторож\" поперек тіснини, щоб заблокувати або знищити ворога (стор. 1).\n\n3.  **Особистий конфлікт між Тугаром Вовком та його донькою Мирославою:**\n    *   Мирослава дорікає батькові за його жорстокість, зокрема за побиття лісничого, і висловлює незгоду з його діями, що призвели до їхнього вигнання (стор. 6).\n    *   Тугар Вовк, у свою чергу, звинувачує Мирославу в тому, що вона стала б на бік громади проти нього, і дорікає їй у відсутності любові до нього (стор. 6).\n\n4.  **Конфлікт між Тугаром Вовком та Бурундою-бегадиром (монгольським воєначальником):**\n    *   Бурунда-бегадир звинувачує Тугара Вовка у зраді та в тому, що він завів монголів у \"западню\", з якої вони не можуть вийти (стор. 3). Тугар Вовк \"полум’ям спалахнув\" на такі слова, що свідчить про гостроту конфлікту (стор. 3).",
+      "type": "open-ended",
+      "category": "plot",
+      "difficulty": "hard",
+      "scores": {
+        "correctness": 5,
+        "completeness": 5,
+        "groundedness": 5,
+        "explanation": "The system accurately identifies and elaborates on all conflicts mentioned in the reference, adding further well-grounded details and additional relevant conflicts from the novel.",
+        "composite_score": 1.0
+      },
+      "retrieval": {
+        "num_chunks": 9,
+        "avg_similarity": 0.6084,
+        "max_similarity": 0.6809,
+        "min_similarity": 0.5519,
+        "utilization": 0.2222,
+        "utilized_count": 2,
+        "sub_queries": [
+          "Які основні конфлікти є в повісті?",
+          "Які внутрішні конфлікти переживають ключові персонажі повісті?",
+          "У чому полягає протистояння тухольської громади та боярина Тугара Вовка?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 20270,
+      "ragas": {
+        "faithfulness": 0.9697,
+        "context_recall": 1.0,
+        "ragas_score": 0.9849
+      }
+    },
+    {
+      "id": "plot-003",
+      "question": "Чим закінчується повість?",
+      "reference_answer": "Тухольці перемагають монголів, затопивши їх табір. Захар Беркут гине як герой.",
+      "predicted_answer": "Повість закінчується перемогою тухольців над нападниками. Вороги, мов лавина, валяться долі драбиною, а на них падають величезні брили каміння. Бурунда-бегадир, розлючений, звинувачує Тугара Вовка у тому, що той завів їх у пастку.\n\n(Інформація взята з останнього абзацу наданого контексту.)",
+      "type": "open-ended",
+      "category": "plot",
+      "difficulty": "medium",
+      "scores": {
+        "correctness": 2,
+        "completeness": 2,
+        "groundedness": 5,
+        "explanation": "The system correctly states the Tukholsi win and provides grounded details about the battle, but it describes a different method of victory and completely omits Zakhar Berkut's heroic death mentioned in the reference.",
+        "composite_score": 0.6
+      },
+      "retrieval": {
+        "num_chunks": 4,
+        "avg_similarity": 0.6398,
+        "max_similarity": 0.6839,
+        "min_similarity": 0.6005,
+        "utilization": 0.0,
+        "utilized_count": 0,
+        "sub_queries": [
+          "Чим закінчується повість?",
+          "Яка доля спіткала Мирославу після вирішальної битви?",
+          "Які зміни відбулися в тухольській громаді після перемоги над монголами?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 10829,
+      "ragas": {
+        "faithfulness": 0.8333,
+        "context_recall": 0.0,
+        "ragas_score": 0.4167
+      }
+    },
+    {
+      "id": "char-001",
+      "question": "Опишіть характер Захара Беркута",
+      "reference_answer": "Захар Беркут — мудрий, справедливий старійшина, який цінує громадські інтереси понад усе. Він — символ народної мудрості та демократичних цінностей.",
+      "predicted_answer": "Захар Беркут постає як мудрий, рішучий і відданий лідер своєї громади. Він демонструє сильні організаторські здібності, чітко віддаючи накази та координуючи дії людей під час складних завдань, наприклад, при обаленні каменя: \"Воля його, діти! - сказав Захар.- Обвивайте його шнурами! А ви, інші, живо до рискалів! Підкопуйте його здолу, підкладайте підойми! Живо, діти, живо!\" (с. 2). Він не лише керує, а й особисто бере участь у роботі, подаючи приклад: \"Ще раз! Дужче натискайте! - кричав Захар і сам принявся за линву\" (с. 2).\n\nЗахар глибоко розуміє важливість подій і їхні довгострокові наслідки для громади. Він усвідомлює, що на копнім суді \"ціле діло його життя важиться на вістрю громадського засуду\" (с. 4). Його мудрість проявляється в здатності бачити не лише просту справедливість, а й \"інші, посторонні, а безмірно важні обставини\", що ускладнюють справу, і розуміти, що будь-який засуд може загрожувати громаді великою небезпекою (с. 4). Він є захисником вільного громадського устрою і розуміє, що прихильний засуд боярину може \"раз назавсіди упокорить перед ним громаду\" (с. 4). Захар вірить у громадський розум і покладається на нього, коли йдеться про справедливість (с. 4).",
+      "type": "open-ended",
+      "category": "character",
+      "difficulty": "medium",
+      "scores": {
+        "correctness": 5,
+        "completeness": 5,
+        "groundedness": 5,
+        "explanation": "The system answer accurately describes Захар Беркут, covers all key points from the reference with additional detail and examples, and is fully supported by the provided context, despite minor page number discrepancies in its citations.",
+        "composite_score": 1.0
+      },
+      "retrieval": {
+        "num_chunks": 7,
+        "avg_similarity": 0.6248,
+        "max_similarity": 0.6876,
+        "min_similarity": 0.575,
+        "utilization": 0.4286,
+        "utilized_count": 3,
+        "sub_queries": [
+          "Опишіть характер Захара Беркута",
+          "Які вчинки Захара Беркута найкраще розкривають його лідерські якості та відданість громаді?",
+          "Які життєві принципи та переконання Захара Беркута є центральними для розуміння його світогляду?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 13542,
+      "ragas": {
+        "faithfulness": 1.0,
+        "context_recall": 1.0,
+        "ragas_score": 1.0
+      }
+    },
+    {
+      "id": "char-002",
+      "question": "Як розвиваються стосунки Максима і Мирослави?",
+      "reference_answer": "Максим і Мирослава кохають одне одного, незважаючи на те що Мирослава — дочка Тугара Вовка, ворога громади. Їхнє кохання долає перешкоди.",
+      "predicted_answer": "На жаль, у наданому контексті немає інформації про те, як розвиваються стосунки Максима і Мирослави.",
+      "type": "open-ended",
+      "category": "character",
+      "difficulty": "hard",
+      "scores": {
+        "correctness": 2,
+        "completeness": 1,
+        "groundedness": 5,
+        "explanation": "The system correctly identifies that the provided context lacks information about Maksym and Myroslava's relationship, but this means it fails to provide any of the correct details from the reference answer.",
+        "composite_score": 0.5333
+      },
+      "retrieval": {
+        "num_chunks": 4,
+        "avg_similarity": 0.6102,
+        "max_similarity": 0.6568,
+        "min_similarity": 0.5586,
+        "utilization": 0.0,
+        "utilized_count": 0,
+        "sub_queries": [
+          "Як розвиваються стосунки Максима і Мирослави?",
+          "Яке значення мало кохання Максима та Мирослави для сюжету роману?",
+          "З якими труднощами зіткнулися Максим і Мирослава, намагаючись бути разом?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 9769,
+      "ragas": {
+        "faithfulness": 1.0,
+        "context_recall": 0.0,
+        "ragas_score": 0.5
+      }
+    },
+    {
+      "id": "char-003",
+      "question": "Чому Тугар Вовк зрадив свій народ?",
+      "reference_answer": "Тугар Вовк зрадив через свої феодальні амбіції та жагу до влади. Він хотів стати боярином і правити, а не підкорятися демократичним рішенням громади.",
+      "predicted_answer": "Згідно з наданим контекстом, Тугар Вовк звинувачується Бурундою-бегадиром у зраді та в тому, що він \"запровадив нас у сесю западню, відки ми вийти не можемо!\" (стор. 3). Однак, причина його зради в цьому уривку не вказана.",
+      "type": "open-ended",
+      "category": "character",
+      "difficulty": "hard",
+      "scores": {
+        "correctness": 2,
+        "completeness": 1,
+        "groundedness": 5,
+        "explanation": "The system answer accurately reports an accusation of betrayal from the context but fails to provide the reasons for Tugar's betrayal as stated in the reference.",
+        "composite_score": 0.5333
+      },
+      "retrieval": {
+        "num_chunks": 4,
+        "avg_similarity": 0.6062,
+        "max_similarity": 0.6677,
+        "min_similarity": 0.552,
+        "utilization": 0.0,
+        "utilized_count": 0,
+        "sub_queries": [
+          "Чому Тугар Вовк зрадив свій народ?",
+          "Які події та обставини підштовхнули Тугара Вовка до співпраці з монголами?",
+          "Якими були внутрішні мотиви та особисті прагнення Тугара Вовка, що зумовили його зраду?"
+        ],
+        "sub_queries_on_topic": [
+          false,
+          true,
+          false
+        ],
+        "off_topic_count": 2
+      },
+      "latency_ms": 11800,
+      "ragas": {
+        "faithfulness": 0.8,
+        "context_recall": 0.5,
+        "ragas_score": 0.65
+      }
+    },
+    {
+      "id": "theme-001",
+      "question": "Яку роль відіграє громада в повісті?",
+      "reference_answer": "Громада є центральною ідеєю повісті. Франко протиставляє демократичний устрій тухольської громади феодальним амбіціям. Громада приймає рішення спільно через віче.",
+      "predicted_answer": "Громада в повісті \"Захар Беркут\" відіграє центральну роль як колективна сила, що забезпечує самоврядування, справедливість та оборону.\n\nОсновні аспекти її ролі:\n*   **Колективна дія та оборона:** Громада (народ, тухольці) діє як єдиний організм у важливих справах, таких як переміщення величезного каменя Сторожа під керівництвом Захара (стор. 1) та у відбитті нападу монголів, де \"тухольці\" з криком зриваються на ворога (стор. 2).\n*   **Орган самоврядування та правосуддя:** Громада має свій \"громадський суд\" (копний суд), який є найвищою інстанцією для вирішення суперечок. Захар Беркут покладається на \"громадський розум\" і \"просту справедливість\" громади, розуміючи, що на цьому суді вирішується \"ціле діло його життя\" та доля їхнього \"вільного громадського устрою\" (стор. 3). Навіть боярин Тугар Вовк, хоч і з обуренням, мав би постати перед цим судом, що підкреслює його авторитет (стор. 4).\n*   **Збереження вільного устрою:** Рішення громади, особливо на суді, є критично важливими для збереження їхніх прав на землі та полонини, а також для захисту їхнього вільного громадського устрою від зазіхань, зокрема з боку боярина (стор. 3).\n\nТаким чином, громада є не просто сукупністю людей, а організованою, розумною та дієвою силою, що є основою життя та виживання тухольців.",
+      "type": "open-ended",
+      "category": "theme",
+      "difficulty": "hard",
+      "scores": {
+        "correctness": 5,
+        "completeness": 5,
+        "groundedness": 5,
+        "explanation": "The system answer is fully accurate, covers all key points from the reference while adding significant detail and examples, and every claim is directly supported by the retrieved context.",
+        "composite_score": 1.0
+      },
+      "retrieval": {
+        "num_chunks": 5,
+        "avg_similarity": 0.6154,
+        "max_similarity": 0.661,
+        "min_similarity": 0.5546,
+        "utilization": 0.0,
+        "utilized_count": 0,
+        "sub_queries": [
+          "Яку роль відіграє громада в повісті?",
+          "Які цінності та принципи об'єднують тухольську громаду?",
+          "Як колективні дії тухольців впливають на розвиток сюжету та долю головних героїв?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 15490,
+      "ragas": {
+        "faithfulness": 1.0,
+        "context_recall": 0.3333,
+        "ragas_score": 0.6666
+      }
+    },
+    {
+      "id": "theme-002",
+      "question": "Як Франко протиставляє демократію і феодалізм у повісті?",
+      "reference_answer": "Демократична тухольська громада з вічем і виборними старійшинами протиставлена феодальному устрою з боярами. Тугар Вовк уособлює феодальні амбіції, а Захар Беркут — демократичні цінності.",
+      "predicted_answer": "Іван Франко протиставляє демократію (втілену в тухольській громаді) та феодалізм (представлений боярином Тугаром Вовком та князем) через кілька ключових аспектів:\n\n1.  **Джерело влади та права:**\n    *   **Демократія:** Тухольська громада керується \"громадським розумом\" і \"вільним громадським устроєм\", де рішення приймаються на \"громадському суді\" згідно з \"давньому звичаю\" та \"законом про непокірного і шкідного громадянина\" (с. 3, 5). Захар Беркут покладається на \"громадський розум\" для \"простої справедливості\" (с. 3).\n    *   **Феодалізм:** Тугар Вовк вважає, що його право на ліс і полонину походить від князя (\"Мені князь дарував той ліс і тоту полонину, і мені ні в кого більше дозволятися\"), повністю відкидаючи авторитет громади та її суду (\"А так, ще питатися вашої громади!\", \"Громадського суду! — скрикнув Тугар Вовк.— То й я мав би ставати перед тим судом?\") (с. 4).\n\n2.  **Методи управління та вирішення конфліктів:**\n    *   **Демократія:** Громада діє колективно та організовано, як показано у спільній праці над Сторожем (\"Ухнув народ з натуги\", \"закричав радісно народ\") (с. 1). У конфлікті з боярином громада намагається вирішити справу через \"громадський суд\" (с. 4).\n    *   **Феодалізм:** Боярин Тугар Вовк використовує силу та насильство для утвердження своїх прав, \"загарбуючи\" ліси та полонини, вбиваючи худобу тухольців і жорстоко б'ючи громадського лісничого (с. 5). Його дії призводять до \"правдивої війни між боярином і тухольцями\" (с. 5).\n\n3.  **Наслідки для громади:**\n    *   **Демократія:** Захар Беркут усвідомлює, що прихильний для боярина засуд означатиме \"признання не так права, як сили по стороні боярина\", що \"упокорить перед ним громаду\" і стане \"першим і найтяжчим виломом у вільнім громадськім устрою\" (с. 3). Громада, відстоюючи свої права, зрештою виганяє боярина зі своїх земель (\"вигнати його з обсягу громадських земель, а дім його зруйнувати дотла\") (с. 5, 6).\n    *   **Феодалізм:** Феодальна система, представлена боярином, прагне підкорити громаду, відібрати її землі та зруйнувати її вільний устрій, замінюючи право силою (с. 3).\n\nТаким чином, Франко показує демократію як систему, що ґрунтується на колективній волі, справедливості та законі, тоді як феодалізм — на індивідуальній силі, свавіллі та зневазі до прав громади.",
+      "type": "open-ended",
+      "category": "theme",
+      "difficulty": "hard",
+      "scores": {
+        "correctness": 5,
+        "completeness": 4,
+        "groundedness": 5,
+        "explanation": "The system answer accurately elaborates on the core contrast between democracy and feudalism and the roles of the characters, with almost all claims directly supported by the provided context, though it omits specific mention of 'віче' and 'виборні старійшини' from the reference.",
+        "composite_score": 0.9333
+      },
+      "retrieval": {
+        "num_chunks": 8,
+        "avg_similarity": 0.6059,
+        "max_similarity": 0.6633,
+        "min_similarity": 0.5583,
+        "utilization": 0.5,
+        "utilized_count": 4,
+        "sub_queries": [
+          "Як Франко протиставляє демократію і феодалізм у повісті?",
+          "Яким чином цінності тухольської громади відрізняються від світогляду боярина Тугара Вовка?",
+          "Які сюжетні конфлікти та рішення персонажів ілюструють переваги та недоліки демократичного устрою тухольців порівняно з феодальною владою?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 25649,
+      "ragas": {
+        "faithfulness": 0.9592,
+        "context_recall": 1.0,
+        "ragas_score": 0.9796
+      }
+    },
+    {
+      "id": "theme-003",
+      "question": "Яке значення природи в повісті?",
+      "reference_answer": "Природа Карпат відіграє важливу роль — гори, ліси, річки є не лише фоном, а активними учасниками подій. Річка стає зброєю проти монголів.",
+      "predicted_answer": "У наданому контексті природа відіграє ключову роль як оборонний елемент та зброя для тухольської громади. Зокрема, величезні брили каміння використовуються для знищення ворогів під час битви (стор. 1). Крім того, громада докладає значних зусиль, щоб перемістити величезний камінь, відомий як \"Сторож\", для перекриття тіснини, що підкреслює стратегічне значення природних об'єктів у захисті їхньої території (стор. 3).",
+      "type": "open-ended",
+      "category": "theme",
+      "difficulty": "hard",
+      "scores": {
+        "correctness": 5,
+        "completeness": 3,
+        "groundedness": 5,
+        "explanation": "The system answer accurately describes nature's role as a weapon with specific examples from the text, fully supported by the context, but it omits the reference's specific mention of the river as a weapon.",
+        "composite_score": 0.8667
+      },
+      "retrieval": {
+        "num_chunks": 4,
+        "avg_similarity": 0.6408,
+        "max_similarity": 0.6532,
+        "min_similarity": 0.609,
+        "utilization": 0.0,
+        "utilized_count": 0,
+        "sub_queries": [
+          "Яке значення природи в повісті?",
+          "Як природні умови Тухольщини впливають на стратегію оборони громади від монгольської навали?",
+          "Які символічні значення надаються природним об'єктам (наприклад, Сторожу, горам, лісу) у повісті та як вони пов'язані з духом тухольців?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 13224,
+      "ragas": {
+        "faithfulness": 1.0,
+        "context_recall": 0.0,
+        "ragas_score": 0.5
+      }
+    },
+    {
+      "id": "theme-004",
+      "question": "Яке ідейне значення повісті для українського народу?",
+      "reference_answer": "Повість прославляє єдність народу, демократичні традиції, готовність боротися за свободу. Франко показує, що сила народу — в єдності та спільному вирішенні проблем.",
+      "predicted_answer": "На основі наданого контексту, ідейне значення повісті \"Захар Беркут\" для українського народу полягає у відстоюванні вільного громадського устрою, справедливості та права проти феодальної сили та тиранії.\n\nКонтекст показує, що Захар Беркут розумів, що на копнім суді вирішується \"ціле діло його життя\", і що прихильний засуд для боярина означатиме \"признання не так права, як сили по стороні боярина\", що назавжди упокорить громаду, віддасть їй у руки не тільки загарбані ліси й полонини, але й цілу громаду, і буде \"першим і найтяжчим виломом у вільнім громадськім устрою\" (стор. \"дить громада при повнім спокою й розвазі...\" до \"...над якого відновленням і\").\n\nТакож, повість висвітлює боротьбу тухольців проти боярина Тугара Вовка, який загарбував їхні землі та чинив насильство, вбиваючи худобу та катуючи лісничих. Громада, у відповідь на це, вирішила застосувати давній звичай щодо \"непокірного і шкідного громадянина, розбійника та злодія\", щоб вигнати його зі своїх земель та зруйнувати його дім (стор. \"того, що до нього не належить...\" до \"...Велика\"). Це підкреслює важливість колективної волі, самоврядування та захисту своїх прав і території.",
+      "type": "open-ended",
+      "category": "theme",
+      "difficulty": "hard",
+      "scores": {
+        "correctness": 5,
+        "completeness": 5,
+        "groundedness": 5,
+        "explanation": "The system answer accurately and completely covers the key themes of national unity, democratic traditions, and fighting for freedom, with all claims directly supported by the provided context.",
+        "composite_score": 1.0
+      },
+      "retrieval": {
+        "num_chunks": 7,
+        "avg_similarity": 0.6027,
+        "max_similarity": 0.6499,
+        "min_similarity": 0.5536,
+        "utilization": 0.2857,
+        "utilized_count": 2,
+        "sub_queries": [
+          "Яке ідейне значення повісті для українського народу?",
+          "Які уроки про єдність громади та захист рідної землі можна винести з подій, описаних у повісті?",
+          "Як конфлікт між тухольською громадою та боярином Тугаром Вовком відображає боротьбу за свободу та справедливість?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 21337,
+      "ragas": {
+        "faithfulness": 1.0,
+        "context_recall": 1.0,
+        "ragas_score": 1.0
+      }
+    },
+    {
+      "id": "theme-005",
+      "question": "Як у повісті зображено патріотизм?",
+      "reference_answer": "Патріотизм зображено через готовність тухольців захищати свою землю, жертвувати собою заради громади. Захар Беркут та Максим — приклади справжніх патріотів.",
+      "predicted_answer": "У повісті патріотизм зображено через колективну оборону та глибоку відданість громаді та її вільному устрою.\n\n1.  **Колективна оборона та самопожертва:** Тухольці демонструють патріотизм, об'єднавшись під керівництвом Захара Беркута для переміщення величезного каменя \"Сторожа\", щоб заблокувати тіснину. Вони працюють \"тихо, без стуку\", \"дружною силою\", щоб захистити свою землю від ворога (стор. 1). Пізніше, під час битви, тухольці з криком зриваються на напасників, глибоко встромлюючи ратища в їхні груди, і радісно вигукують після успішного відбиття ворога, що валиться \"мов тяжка лавина\" (стор. 3). Це показує їхню готовність боротися і працювати разом для захисту свого дому.\n2.  **Відданість громадському устрою:** Захар Беркут розуміє важливість \"вільного громадського устрою\" і те, що \"ціле діло його життя важиться на вістрю громадського засуду\". Його турбота про відновлення та збереження цього устрою є проявом патріотизму до своєї громади та її принципів (стор. 4).\n3.  **Контраст з відсутністю лояльності:** Відмова Тугара Вовка підкорятися \"громадському суду\" і його переконання, що йому \"князь дарував той ліс і тоту полонину, і мені ні в кого більше дозволятися\" (стор. 6), слугує контрастом, підкреслюючи патріотичну відданість тухольців своїй громаді та її самоврядуванню.",
+      "type": "open-ended",
+      "category": "theme",
+      "difficulty": "medium",
+      "scores": {
+        "correctness": 5,
+        "completeness": 4,
+        "groundedness": 5,
+        "explanation": "The system answer accurately and comprehensively explains patriotism through collective defense, devotion to civic order, and the example of Zachar Berkut, with all claims well-grounded in the provided context, though it omits Maksym as an explicit example.",
+        "composite_score": 0.9333
+      },
+      "retrieval": {
+        "num_chunks": 6,
+        "avg_similarity": 0.6108,
+        "max_similarity": 0.6598,
+        "min_similarity": 0.5513,
+        "utilization": 0.3333,
+        "utilized_count": 2,
+        "sub_queries": [
+          "Як у повісті зображено патріотизм?",
+          "Які персонажі повісті \"Захар Беркут\" найяскравіше демонструють патріотизм і якими вчинками вони це підтверджують?",
+          "Як патріотизм тухольців впливає на їхні рішення та стратегію у боротьбі проти ворогів?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 14087,
+      "ragas": {
+        "faithfulness": 0.8824,
+        "context_recall": 0.5,
+        "ragas_score": 0.6912
+      }
+    },
+    {
+      "id": "style-001",
+      "question": "Якими художніми засобами користується Франко в повісті?",
+      "reference_answer": "Франко використовує яскраві описи природи, фольклорні елементи, народну мову, історичні паралелі, контраст між добром і злом.",
+      "predicted_answer": "Наданий контекст не містить інформації про те, якими художніми засобами користується Франко в повісті.",
+      "type": "open-ended",
+      "category": "style",
+      "difficulty": "hard",
+      "scores": {
+        "correctness": 1,
+        "completeness": 1,
+        "groundedness": 5,
+        "explanation": "The system correctly states that the provided context does not contain information about Franko's artistic means, but it fails to provide the actual answer about the novel's literary devices.",
+        "composite_score": 0.4667
+      },
+      "retrieval": {
+        "num_chunks": 9,
+        "avg_similarity": 0.6191,
+        "max_similarity": 0.7257,
+        "min_similarity": 0.5501,
+        "utilization": 0.1111,
+        "utilized_count": 1,
+        "sub_queries": [
+          "Якими художніми засобами користується Франко в повісті?",
+          "Яку роль відіграє Максим Беркут у боротьбі тухольців проти монголів?",
+          "Які ідеали та цінності сповідує тухольська громада, і як вони протиставляються цінностям Тугара Вовка?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 12283,
+      "ragas": {
+        "faithfulness": 1.0,
+        "context_recall": 0.0,
+        "ragas_score": 0.5
+      }
+    },
+    {
+      "id": "style-002",
+      "question": "Яку роль відіграють народні пісні та перекази в повісті?",
+      "reference_answer": "Франко включає фольклорні елементи для створення автентичної атмосфери та зв'язку з народними традиціями.",
+      "predicted_answer": "Я не можу відповісти на це питання, оскільки наданий контекст не містить інформації про роль народних пісень та переказів у повісті.",
+      "type": "open-ended",
+      "category": "style",
+      "difficulty": "hard",
+      "scores": {
+        "correctness": 1,
+        "completeness": 1,
+        "groundedness": 5,
+        "explanation": "The system correctly identifies that the provided context does not contain the information needed to answer the question, but consequently fails to provide any information aligning with the reference answer.",
+        "composite_score": 0.4667
+      },
+      "retrieval": {
+        "num_chunks": 4,
+        "avg_similarity": 0.5781,
+        "max_similarity": 0.5875,
+        "min_similarity": 0.5656,
+        "utilization": 0.0,
+        "utilized_count": 0,
+        "sub_queries": [
+          "Яку роль відіграють народні пісні та перекази в повісті?",
+          "Як народні пісні та перекази впливають на світогляд та вчинки мешканців Тухольщини?",
+          "Яким чином народна творчість (пісні, легенди) допомагає зберегти пам'ять про минуле та передати мудрість предків у повісті?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 8516,
+      "ragas": {
+        "faithfulness": 0.5,
+        "context_recall": 0.0,
+        "ragas_score": 0.25
+      }
+    },
+    {
+      "id": "trap-001",
+      "question": "Чи є Захар Беркут реальною історичною особою?",
+      "reference_answer": "Захар Беркут — літературний персонаж, створений Іваном Франком. Це вигаданий герой повісті.",
+      "predicted_answer": "Наданий контекст не містить інформації про те, чи є Захар Беркут реальною історичною особою. Контекст представляє його як персонажа літературного твору Івана Франка під назвою \"Захар Беркут\" (Франко І. Я. ЗАХАР БЕРКУТ т. 16 ч. 1).",
+      "type": "open-ended",
+      "category": "off-topic-trap",
+      "difficulty": "medium",
+      "scores": {
+        "correctness": 4,
+        "completeness": 4,
+        "groundedness": 5,
+        "explanation": "The system accurately identifies Захар Беркут as a literary character by Ivan Franko and correctly states that the context does not confirm his historical reality, which aligns with the reference's assertion of him being fictional, though it doesn't explicitly use the word 'fictional'.",
+        "composite_score": 0.8667
+      },
+      "retrieval": {
+        "num_chunks": 9,
+        "avg_similarity": 0.6191,
+        "max_similarity": 0.7066,
+        "min_similarity": 0.5635,
+        "utilization": 0.1111,
+        "utilized_count": 1,
+        "sub_queries": [
+          "Чи є Захар Беркут реальною історичною особою?",
+          "Які риси характеру Захара Беркута розкриваються в романі?",
+          "Яку роль відіграє Захар Беркут у житті тухольської громади та в боротьбі проти монголів?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 7945,
+      "ragas": {
+        "faithfulness": 1.0,
+        "context_recall": 0.5,
+        "ragas_score": 0.75
+      }
+    },
+    {
+      "id": "trap-002",
+      "question": "Коли вийшов фільм Захар Беркут?",
+      "reference_answer": "Це питання не стосується змісту повісті Івана Франка. Не знаю відповіді на основі контексту.",
+      "predicted_answer": "Я не знаю відповіді на це питання, оскільки наданий контекст не містить інформації про вихід фільму \"Захар Беркут\". Контекст стосується лише змісту книги Івана Франка \"Захар Беркут\" (стор. 16).",
+      "type": "open-ended",
+      "category": "off-topic-trap",
+      "difficulty": "hard",
+      "scores": {
+        "correctness": 4,
+        "completeness": 5,
+        "groundedness": 4,
+        "explanation": "The system correctly states it cannot answer the question because the context, which is about the book's content, does not contain information about a film, aligning with the reference's inability to answer from context, with a minor misinterpretation of a page number.",
+        "composite_score": 0.8667
+      },
+      "retrieval": {
+        "num_chunks": 7,
+        "avg_similarity": 0.6085,
+        "max_similarity": 0.6639,
+        "min_similarity": 0.563,
+        "utilization": 0.0,
+        "utilized_count": 0,
+        "sub_queries": [
+          "Коли вийшов фільм Захар Беркут?",
+          "Які основні риси характеру Захара Беркута розкриваються в романі?",
+          "Опишіть ключові події, пов'язані з обороною Тухольщини від монголо-татарської навали."
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 9088,
+      "ragas": {
+        "faithfulness": 0.5,
+        "context_recall": 1.0,
+        "ragas_score": 0.75
+      }
+    },
+    {
+      "id": "plot-004",
+      "question": "Що сталося з Максимом після перемоги?",
+      "reference_answer": "Після перемоги над монголами Максим залишився з громадою",
+      "predicted_answer": "Я не знаю відповіді на це питання, оскільки наданий контекст не містить інформації про те, що сталося з Максимом після перемоги.",
+      "type": "open-ended",
+      "category": "plot",
+      "difficulty": "medium",
+      "scores": {
+        "correctness": 1,
+        "completeness": 1,
+        "groundedness": 5,
+        "explanation": "The system correctly states that the provided context does not contain the answer, which is fully grounded, but it fails to provide the factual information present in the reference answer.",
+        "composite_score": 0.4667
+      },
+      "retrieval": {
+        "num_chunks": 4,
+        "avg_similarity": 0.6319,
+        "max_similarity": 0.6832,
+        "min_similarity": 0.5604,
+        "utilization": 0.0,
+        "utilized_count": 0,
+        "sub_queries": [
+          "Що сталося з Максимом після перемоги?",
+          "Яку роль відіграв Максим у здобутті перемоги над монголами?",
+          "Як перемога вплинула на стосунки Максима з Мирославою?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 10417,
+      "ragas": {
+        "faithfulness": 0.5,
+        "context_recall": 0.0,
+        "ragas_score": 0.25
+      }
+    },
+    {
+      "id": "char-004",
+      "question": "Яку роль відіграє Мирослава в сюжеті повісті?",
+      "reference_answer": "Мирослава — дочка Тугара Вовка, кохана Максима. Вона розривається між вірністю батькові та коханням до Максима. Врешті обирає сторону громади.",
+      "predicted_answer": "На жаль, у наданому контексті немає інформації про роль Мирослави в сюжеті повісті. Її ім'я не згадується в жодному з фрагментів.",
+      "type": "open-ended",
+      "category": "character",
+      "difficulty": "medium",
+      "scores": {
+        "correctness": 1,
+        "completeness": 1,
+        "groundedness": 5,
+        "explanation": "The system correctly states that the retrieved context lacks information about Myroslava, but consequently fails to provide any of the details about her character present in the reference answer.",
+        "composite_score": 0.4667
+      },
+      "retrieval": {
+        "num_chunks": 4,
+        "avg_similarity": 0.6373,
+        "max_similarity": 0.6954,
+        "min_similarity": 0.5886,
+        "utilization": 0.0,
+        "utilized_count": 0,
+        "sub_queries": [
+          "Яку роль відіграє Мирослава в сюжеті повісті?",
+          "Які рішення та вчинки Мирослави найбільше впливають на розвиток сюжету та долю головних героїв?",
+          "Які внутрішні конфлікти переживає Мирослава, розриваючись між вірністю батькові та коханням до Максима, і як це впливає на її вибір?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 13255,
+      "ragas": {
+        "faithfulness": 1.0,
+        "context_recall": 0.0,
+        "ragas_score": 0.5
+      }
+    }
+  ]
+}

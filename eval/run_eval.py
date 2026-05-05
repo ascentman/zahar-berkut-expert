@@ -166,8 +166,10 @@ def run_eval(args):
         "config": {
             "model": "gemini-2.5-flash",
             "embeddings": "gemini-embedding-2",
+            "retrieval": "hybrid (vector + BM25)",
+            "reranker": "cross-encoder/mmarco-mMiniLMv2-L12-H384-v1",
             "k": 12,
-            "min_score": 0.55,
+            "rerank_candidates": 25,
         },
         "summary": summary,
         "results": results,

@@ -2,6 +2,7 @@ import json
 import sqlite3
 import time
 from datetime import datetime, timezone
+from typing import Any, Optional
 
 from langchain_core.callbacks import CallbackManagerForRetrieverRun
 from langchain_core.documents import Document
@@ -131,10 +132,14 @@ Original question: {question}""",
 
 
 class InstrumentedRetriever(BaseRetriever):
-    """Retriever that captures similarity scores and timing metadata.
+    """Multi-query retriever with optional hybrid search (BM25 + vector) and cross-encoder reranking.
 
-    Replicates MultiQueryRetriever behavior but calls
-    similarity_search_with_score() to capture cosine scores.
+    Pipeline:
+      1. Generate sub-queries via LLM (MultiQuery pattern)
+      2. Vector search (Qdrant cosine) + optional BM25 search per sub-query
+      3. Merge candidates with Reciprocal Rank Fusion (RRF)
+      4. Optional cross-encoder reranking of top-N candidates
+      5. Return final top-k
     """
 
     vector_store: QdrantVectorStore
@@ -142,6 +147,12 @@ class InstrumentedRetriever(BaseRetriever):
     k: int = 8
     min_score: float = 0.55
     include_original: bool = True
+    # Optional hybrid search — pass a BM25Retriever built from the same chunks
+    bm25_retriever: Optional[Any] = None
+    # Optional cross-encoder — pass a sentence_transformers.CrossEncoder instance
+    cross_encoder: Optional[Any] = None
+    # How many RRF candidates to feed into the cross-encoder (more = better recall, slower)
+    rerank_candidates: int = 25
 
     # Stored after each retrieval for the caller to read
     last_sub_queries: list[str] = Field(default_factory=list)
@@ -162,30 +173,68 @@ class InstrumentedRetriever(BaseRetriever):
     ) -> list[Document]:
         t0 = time.perf_counter()
 
-        # Generate sub-queries
         sub_queries = self._generate_sub_queries(query)
         self.last_sub_queries = sub_queries
 
-        # Search with scores for each sub-query, deduplicate keeping best score
-        best_by_content: dict[str, tuple[Document, float, str]] = {}
+        # --- Collect candidates from vector search ---
+        # key = (content, page) → tracks best score and all ranks for RRF
+        content_to_doc: dict[tuple, Document] = {}
+        vector_best_score: dict[tuple, float] = {}
+        vector_ranks: dict[tuple, list[int]] = {}
+
         for sq in sub_queries:
             results = self.vector_store.similarity_search_with_score(sq, k=self.k)
-            for doc, score in results:
+            for rank, (doc, score) in enumerate(results):
                 key = (doc.page_content, doc.metadata.get("page"))
-                if key not in best_by_content or score > best_by_content[key][1]:
-                    best_by_content[key] = (doc, score, sq)
+                content_to_doc[key] = doc
+                vector_ranks.setdefault(key, []).append(rank)
+                if score > vector_best_score.get(key, 0.0):
+                    vector_best_score[key] = score
 
-        # Filter by minimum score, sort descending, take top-k
-        sorted_results = sorted(best_by_content.values(), key=lambda x: x[1], reverse=True)
-        filtered = [(d, s, q) for d, s, q in sorted_results if s >= self.min_score]
-        top_results = filtered[:self.k] if filtered else sorted_results[:3]
+        # --- BM25 search (keyword matching) ---
+        bm25_ranks: dict[tuple, list[int]] = {}
+        if self.bm25_retriever is not None:
+            for sq in sub_queries:
+                hits = self.bm25_retriever.invoke(sq)
+                for rank, doc in enumerate(hits):
+                    key = (doc.page_content, doc.metadata.get("page"))
+                    content_to_doc[key] = doc
+                    bm25_ranks.setdefault(key, []).append(rank)
 
-        # Inject metadata
-        docs = []
-        for doc, score, source_query in top_results:
-            doc.metadata["similarity_score"] = round(score, 4)
-            doc.metadata["sub_query_source"] = source_query
-            docs.append(doc)
+        # --- Reciprocal Rank Fusion ---
+        # RRF score = Σ 1/(rank + k_rrf) across all appearances in any result list
+        # k_rrf=60 is the standard smoothing constant from the original RRF paper
+        k_rrf = 60
+        rrf_scores: dict[tuple, float] = {}
+        for key in content_to_doc:
+            score = sum(1.0 / (r + k_rrf) for r in vector_ranks.get(key, []))
+            score += sum(1.0 / (r + k_rrf) for r in bm25_ranks.get(key, []))
+            rrf_scores[key] = score
+
+        # Sort by RRF descending, attach metadata
+        sorted_keys = sorted(rrf_scores, key=rrf_scores.__getitem__, reverse=True)
+        candidates: list[Document] = []
+        for key in sorted_keys:
+            doc = content_to_doc[key]
+            doc.metadata["similarity_score"] = round(vector_best_score.get(key, 0.0), 4)
+            doc.metadata["rrf_score"] = round(rrf_scores[key], 6)
+            candidates.append(doc)
+
+        # --- Cross-encoder reranking ---
+        if self.cross_encoder is not None and candidates:
+            pool = candidates[:self.rerank_candidates]
+            # Score each (original_query, chunk) pair — cross-encoder reads both together
+            pairs = [(query, doc.page_content) for doc in pool]
+            ce_scores = self.cross_encoder.predict(pairs)
+            ranked = sorted(zip(ce_scores, pool), key=lambda x: x[0], reverse=True)
+            docs = []
+            for ce_score, doc in ranked[:self.k]:
+                doc.metadata["rerank_score"] = round(float(ce_score), 4)
+                docs.append(doc)
+        else:
+            # No reranker: apply min_score filter and take top-k
+            filtered = [d for d in candidates if d.metadata.get("similarity_score", 0) >= self.min_score]
+            docs = filtered[:self.k] if filtered else candidates[:3]
 
         self.last_retrieval_time_ms = (time.perf_counter() - t0) * 1000
         return docs

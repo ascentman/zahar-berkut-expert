@@ -1,0 +1,197 @@
+{
+  "run_id": "eval_20260504_204335",
+  "timestamp": "2026-05-04T20:43:35.496703+00:00",
+  "config": {
+    "model": "gemini-2.5-flash",
+    "embeddings": "gemini-embedding-2",
+    "retrieval": "hybrid (vector + BM25)",
+    "reranker": "cross-encoder/mmarco-mMiniLMv2-L12-H384-v1",
+    "k": 12,
+    "rerank_candidates": 25
+  },
+  "summary": {
+    "total_questions": 5,
+    "factual_count": 4,
+    "open_ended_count": 1,
+    "factual_accuracy": 0.5,
+    "open_ended_quality": 1.0,
+    "avg_retrieval_utilization": 0.0833,
+    "off_topic_rate": 0.0,
+    "latency_p50_ms": 13100,
+    "latency_p95_ms": 24165
+  },
+  "results": [
+    {
+      "id": "fact-001",
+      "question": "Хто такий Захар Беркут?",
+      "reference_answer": "Захар Беркут — старійшина тухольської громади, мудрий лідер, який керує громадою і захищає її інтереси.",
+      "predicted_answer": "Захар Беркут – це сивий, поважний старець віком понад 90 років, найстарший у тухольській громаді (стор. 1). Він є батьком вісьмох синів, серед яких наймолодший – Максим (стор. 1).\n\nОписаний як високий на зріст, кремезний, сильний, з суворим обличчям, Захар Беркут був багатий життєвим досвідом та знанням людей і обставин. Він уособлював давніх патріархів, батьків і провідників народу, про яких розповідають тисячолітні пісні та перекази (стор. 1).\n\nНезважаючи на похилий вік, він не припиняв працювати: займався садівництвом, пасічництвом та лікуванням (стор. 2). Тухольці особливо цінували його за лікарські здібності, які він здобув, мандруючи та навчаючись у старця Акинтія зі скитського монастиря протягом трьох років. Під час цієї чотирилітньої мандрівки він також відвідав Галич і Київ, пізнавши світ і повернувшись не лише лікарем, а й громадянином (стор. 4, 5).\n\nГоловною цінністю свого життя Захар Беркут вважав допомогу іншим, стверджуючи, що \"життя лиш доти має вартість, доки чоловік може помагати іншим\" (стор. 3, 4). Його життя було присвячене добру громади, яку він вважав своїм світом і ціллю (стор. 4). Він був переконаний, що сила громади полягає у спільному порозумінні та діянні, а також у зміцненні дружніх зв'язків між сусідніми громадами (стор. 1). Завдяки його довголітній діяльності тухольська громада стояла дружно, як одна душа (стор. 2). Його вважали останнім із добрих велетнів-сторожів тухольських (стор. 3).",
+      "type": "open-ended",
+      "category": "character",
+      "difficulty": "easy",
+      "scores": {
+        "correctness": 5,
+        "completeness": 5,
+        "groundedness": 5,
+        "explanation": "The system answer is fully accurate, comprehensively covers all points from the reference while adding rich detail, and every piece of information is directly supported by the provided context.",
+        "composite_score": 1.0
+      },
+      "retrieval": {
+        "num_chunks": 12,
+        "avg_similarity": 0.0997,
+        "max_similarity": 0.6106,
+        "min_similarity": 0.0,
+        "utilization": 0.3333,
+        "utilized_count": 4,
+        "sub_queries": [
+          "Хто такий Захар Беркут?",
+          "Яку роль відіграє Захар Беркут у житті тухольської громади та які його основні принципи?",
+          "Які випробування долає Захар Беркут під час монгольської навали і як він демонструє свою відданість громаді?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 24165
+    },
+    {
+      "id": "fact-002",
+      "question": "Як звати сина Захара Беркута?",
+      "reference_answer": "Максим",
+      "predicted_answer": "Сина Захара Беркута звати Максим (сторінки 2, 4, 7).",
+      "type": "factual",
+      "category": "character",
+      "difficulty": "easy",
+      "scores": {
+        "containment": true,
+        "token_overlap": 1.0,
+        "score": 1.0
+      },
+      "retrieval": {
+        "num_chunks": 12,
+        "avg_similarity": 0.1025,
+        "max_similarity": 0.6873,
+        "min_similarity": 0.0,
+        "utilization": 0.0,
+        "utilized_count": 0,
+        "sub_queries": [
+          "Як звати сина Захара Беркута?",
+          "Яку роль відіграв син Захара Беркута у захисті Тухольщини від монголів?",
+          "Які риси характеру виявив син Захара Беркута під час випробувань?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 13009
+    },
+    {
+      "id": "fact-003",
+      "question": "Хто є батьком Мирослави?",
+      "reference_answer": "Тугар Вовк",
+      "predicted_answer": "Батьком Мирослави є Тугар Вовк (Page 1, Page 2).",
+      "type": "factual",
+      "category": "character",
+      "difficulty": "easy",
+      "scores": {
+        "containment": true,
+        "token_overlap": 1.0,
+        "score": 1.0
+      },
+      "retrieval": {
+        "num_chunks": 12,
+        "avg_similarity": 0.185,
+        "max_similarity": 0.5856,
+        "min_similarity": 0.0,
+        "utilization": 0.0,
+        "utilized_count": 0,
+        "sub_queries": [
+          "Хто є батьком Мирослави?",
+          "Яке ставлення Мирослави до зрадницьких планів її батька Тугара Вовка?",
+          "Якими мотивами керується Тугар Вовк у своїх діях проти тухольської громади?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 13100
+    },
+    {
+      "id": "fact-004",
+      "question": "Де відбуваються події повісті?",
+      "reference_answer": "Тухольщина, Карпати",
+      "predicted_answer": "Події повісті відбуваються в Тухольській долині, зокрема в селі Тухля, її тіснині, кітловині, горах та біля тухольського потоку (стор. 4, 6). Ширше, це відбувається в Карпатах, про що свідчить згадка про гору Зелемень (стор. 5).",
+      "type": "factual",
+      "category": "setting",
+      "difficulty": "easy",
+      "scores": {
+        "containment": false,
+        "token_overlap": 0.0,
+        "score": 0.0
+      },
+      "retrieval": {
+        "num_chunks": 12,
+        "avg_similarity": 0.2427,
+        "max_similarity": 0.6839,
+        "min_similarity": 0.0,
+        "utilization": 0.0,
+        "utilized_count": 0,
+        "sub_queries": [
+          "Де відбуваються події повісті?",
+          "Які ідеали відстоює Захар Беркут і як вони впливають на громаду?",
+          "Яку роль відіграє гора Сторож у стратегії захисту тухольців?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 14029
+    },
+    {
+      "id": "fact-005",
+      "question": "В якому столітті відбуваються події повісті?",
+      "reference_answer": "XIII століття, 1241 рік",
+      "predicted_answer": "Події повісті \"Захар Беркут\" відбуваються у XIII столітті (Том 16, Частина 1).",
+      "type": "factual",
+      "category": "setting",
+      "difficulty": "medium",
+      "scores": {
+        "containment": false,
+        "token_overlap": 0.3333,
+        "score": 0.3333
+      },
+      "retrieval": {
+        "num_chunks": 12,
+        "avg_similarity": 0.2538,
+        "max_similarity": 0.6589,
+        "min_similarity": 0.0,
+        "utilization": 0.0833,
+        "utilized_count": 1,
+        "sub_queries": [
+          "В якому столітті відбуваються події повісті?",
+          "Які причини призвели до конфлікту між тухольською громадою та боярином Тугаром Вовком?",
+          "Як розвивалися стосунки між Максимом Беркутом та Мирославою?"
+        ],
+        "sub_queries_on_topic": [
+          true,
+          true,
+          true
+        ],
+        "off_topic_count": 0
+      },
+      "latency_ms": 11848
+    }
+  ]
+}
